@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 spaceBetween: 0,
                 grabCursor: true,
                 effect: 'fade',
-                direction: "vertical",
+                direction: "horizontal",
                 fadeEffect: {
                     crossFade: true
                 },
@@ -131,6 +131,11 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true
+                },
+                breakpoints: {
+                    1024: {
+                        direction: "vertical"
+                    }
                 }
                 });
         }
@@ -145,15 +150,10 @@ document.addEventListener("DOMContentLoaded",(event) => {
                     crossFade: true
                 },
                 speed: 500,
-                direction: "vertical",
+                direction: "horizontal",
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true
-                },
-                breakpoints: {
-                    1024: {
-                        direction: "horizontal",
-                    }
                 }
                 });
         }

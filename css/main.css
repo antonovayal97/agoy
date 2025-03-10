@@ -138,6 +138,10 @@ body {
   font-family: "Arsenal", sans-serif;
 }
 
+.main {
+  overflow: hidden;
+}
+
 .container {
   max-width: 100rem;
   padding-left: 4rem;
