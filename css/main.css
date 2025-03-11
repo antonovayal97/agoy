@@ -136,6 +136,7 @@ body {
   background-color: var(--color-white);
   color: var(--color-accent-black);
   font-family: "Arsenal", sans-serif;
+  overscroll-behavior-y: contain;
 }
 
 .main {
