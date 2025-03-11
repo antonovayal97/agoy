@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded",(event) => {
 function initPageChanger() {
     // Конфигурация
     const PAGE_LINKS = [
-        //"/agoy/index.html",
-        //"/agoy/about.html",
-        //"/agoy/complex-objects.html",
-        "/index.html",
-        "/about.html",
-        "/complex-objects.html"
+        "/agoy/index.html",
+        "/agoy/about.html",
+        "/agoy/complex-objects.html",
+        //"/index.html",
+        //"/about.html",
+        //"/complex-objects.html"
     ].map(normalizePath);
 
     let loaderRunner = document.querySelector(".loader-runner");
