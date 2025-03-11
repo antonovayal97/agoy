@@ -2,6 +2,196 @@ document.addEventListener("DOMContentLoaded",(event) => {
     const body = document.querySelector("body");
     const header = document.querySelector("header");
     const mainEl = document.querySelector("main");
+    
+    const footer = document.querySelector("footer");
+    footer.style.display = "none"
+
+function initPageChanger() {
+    // Конфигурация
+    const PAGE_LINKS = [
+        "/index.html",
+        "/about.html",
+        "/complex-objects.html"
+    ].map(normalizePath);
+
+    // Состояние
+    let currentPageIndex = 0;
+    let isTransitioning = false;
+    let scrollTimeout = null;
+    let touchStartY = 0;
+
+    // Инициализация
+    initCurrentPage();
+    setupEventListeners();
+    console.log('PageChanger initialized');
+
+    // Нормализация URL
+    function normalizePath(path) {
+        return path === '/' ? '' : path.replace(/\/+$/, '').toLowerCase();
+    }
+
+    // Определение текущей страницы
+    function initCurrentPage() {
+        const currentPath = normalizePath(window.location.pathname);
+        currentPageIndex = PAGE_LINKS.findIndex(link => link === currentPath);
+        
+        if (currentPageIndex === -1) {
+            console.warn('Unknown URL, redirecting to home');
+            window.history.replaceState({ index: 0 }, '', '/');
+            currentPageIndex = 0;
+        }
+        
+        console.log('Current page:', currentPageIndex, PAGE_LINKS[currentPageIndex]);
+    }
+
+    // Проверка границ скролла
+    function checkScrollEdges() {
+        const scrollY = window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight;
+        const windowHeight = window.innerHeight;
+        const maxScroll = Math.max(documentHeight - windowHeight, 0);
+
+        return {
+            isTop: scrollY <= 50,
+            isBottom: scrollY >= maxScroll - 50 || documentHeight <= windowHeight
+        };
+    }
+
+    // Навигация
+    async function navigateToPage(newIndex) {
+        if (newIndex === currentPageIndex || isTransitioning) return;
+        
+        console.log(`Navigating from ${currentPageIndex} to ${newIndex}`);
+        isTransitioning = true;
+
+        try {
+            // Загрузка контента
+            const content = await fetchPageContent(PAGE_LINKS[newIndex]);
+            updatePageContent(content);
+
+            // Обновление состояния
+            currentPageIndex = newIndex;
+            window.history.pushState({ index: newIndex }, '', PAGE_LINKS[newIndex]);
+
+            // Плавный скролл
+            window.scrollTo({
+                top: 0,//newIndex > currentPageIndex ? 0 : document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        } catch (error) {
+            console.error('Navigation failed:', error);
+        } finally {
+            setTimeout(() => {
+                isTransitioning = false;
+                console.log('Navigation cooldown');
+            }, 1000);
+        }
+    }
+
+    // Загрузка страницы
+    async function fetchPageContent(url) {
+        console.log('Fetching:', url);
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.text();
+    }
+
+    // Обновление DOM
+    function updatePageContent(html) {
+        const parser = new DOMParser();
+        const newDoc = parser.parseFromString(html, 'text/html');
+        const newMain = newDoc.querySelector('main');
+        
+        if (!newMain) throw new Error('Main content not found');
+        
+        document.querySelector('main').innerHTML = newMain.innerHTML;
+        initPageComponents();
+        console.log('Content updated');
+    }
+
+    // Инициализация компонентов
+    function initPageComponents() {
+        try {
+            if (typeof initAdapt === 'function') initAdapt();
+            if (typeof initAspectRatio === 'function') initAspectRatio();
+            if (typeof initSlides === 'function') initSlides();
+            console.log('Components initialized');
+        } catch (e) {
+            console.error('Component error:', e);
+        }
+    }
+
+    // Обработчики событий
+    function setupEventListeners() {
+        // Десктоп
+        window.addEventListener('wheel', handleDesktopScroll);
+        
+        // Мобильные устройства
+        window.addEventListener('touchstart', handleTouchStart);
+        window.addEventListener('touchmove', handleTouchMove);
+        
+        // История браузера
+        window.addEventListener('popstate', handlePopState);
+    }
+
+    // Обработка скролла мышью
+    function handleDesktopScroll(e) {
+        if (isTransitioning) return;
+        
+        const { isTop, isBottom } = checkScrollEdges();
+        console.log(`Scroll: deltaY=${e.deltaY}, top=${isTop}, bottom=${isBottom}`);
+
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+
+        if ((e.deltaY > 0 && isBottom && canGoNext()) || 
+            (e.deltaY < 0 && isTop && canGoPrev())) {
+            scrollTimeout = setTimeout(() => {
+                e.deltaY > 0 ? navigateToPage(currentPageIndex + 1) : 
+                              navigateToPage(currentPageIndex - 1);
+            }, 350);
+        }
+    }
+
+    // Обработка тач-событий
+    function handleTouchStart(e) {
+        touchStartY = e.touches[0].clientY;
+    }
+
+    function handleTouchMove(e) {
+        if (isTransitioning) return;
+        
+        const touchY = e.touches[0].clientY;
+        const deltaY = touchY - touchStartY;
+        const { isTop, isBottom } = checkScrollEdges();
+        
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+
+        if ((deltaY < -20 && isBottom && canGoNext()) || 
+            (deltaY > 20 && isTop && canGoPrev())) {
+            scrollTimeout = setTimeout(() => {
+                deltaY < 0 ? navigateToPage(currentPageIndex + 1) : 
+                            navigateToPage(currentPageIndex - 1);
+            }, 350);
+        }
+    }
+
+    // Обработка истории
+    function handlePopState(e) {
+        const newIndex = e.state?.index ?? 0;
+        if (newIndex !== currentPageIndex) {
+            navigateToPage(newIndex);
+        }
+    }
+
+    // Вспомогательные проверки
+    function canGoNext() {
+        return currentPageIndex < PAGE_LINKS.length - 1;
+    }
+
+    function canGoPrev() {
+        return currentPageIndex > 0;
+    }
+}
 
     function mainMarginTop()
     {
@@ -200,6 +390,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
             linkAttributeName: "data-hystmodal",
             //settings (optional). see API
         });
+
+        //modals.open("#modal-form")
     }
     function initMask()
     {
@@ -334,14 +526,38 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
         mainMarginTop();
     }
-    
+    function initChangePage(callback)
+    {
+        fetch('/about-project.html')
+        .then(response => response.text()) // Преобразуем ответ в текст
+        .then(html => {
+            // Создаем временный элемент для парсинга HTML
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+
+            // Получаем содержимое элемента <main> из запрошенной страницы
+            const newMainContent = doc.querySelector('main').innerHTML;
+
+            // Заменяем содержимое <main> на текущей странице
+            document.querySelector('main').innerHTML = newMainContent;
+
+            history.pushState(null, '', '/about-project.html');
+
+            callback();
+        })
+        .catch(error => {
+            console.error('Ошибка при загрузке страницы:', error);
+        });
+    }
     function init()
     {
+        initPageChanger();
         initAdapt();
         mobileMenu();
         headerHide();
         initSlides();
         mainMarginTop();
+        initModals();
     }
 
     function onWindowResize()
