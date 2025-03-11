@@ -9,11 +9,15 @@ document.addEventListener("DOMContentLoaded",(event) => {
 function initPageChanger() {
     // Конфигурация
     const PAGE_LINKS = [
-        "/agoy/index.html",
-        "/agoy/about.html",
-        "/agoy/complex-objects.html"
+        //"/agoy/index.html",
+        //"/agoy/about.html",
+        //"/agoy/complex-objects.html",
+        "/index.html",
+        "/about.html",
+        "/complex-objects.html"
     ].map(normalizePath);
 
+    let loaderRunner = document.querySelector(".loader-runner");
     // Состояние
     let currentPageIndex = 0;
     let isTransitioning = false;
@@ -67,17 +71,12 @@ function initPageChanger() {
         try {
             // Загрузка контента
             const content = await fetchPageContent(PAGE_LINKS[newIndex]);
-            updatePageContent(content);
+            updatePageContent(content, newIndex);
 
             // Обновление состояния
             currentPageIndex = newIndex;
             window.history.pushState({ index: newIndex }, '', PAGE_LINKS[newIndex]);
 
-            // Плавный скролл
-            window.scrollTo({
-                top: 0,//newIndex > currentPageIndex ? 0 : document.body.scrollHeight,
-                behavior: 'smooth'
-            });
         } catch (error) {
             console.error('Navigation failed:', error);
         } finally {
@@ -97,16 +96,46 @@ function initPageChanger() {
     }
 
     // Обновление DOM
-    function updatePageContent(html) {
+    function updatePageContent(html, newIndex) {
         const parser = new DOMParser();
         const newDoc = parser.parseFromString(html, 'text/html');
         const newMain = newDoc.querySelector('main');
         
         if (!newMain) throw new Error('Main content not found');
         
-        document.querySelector('main').innerHTML = newMain.innerHTML;
-        initPageComponents();
-        console.log('Content updated');
+
+        if(newIndex > currentPageIndex)
+        {
+            loaderRunner.classList.remove("loader-runner-bottom-to-top");
+            loaderRunner.classList.remove("loader-runner--active-bottom-to-top");
+            loaderRunner.classList.remove("loader-runner-top-to-bottom");
+            loaderRunner.classList.remove("loader-runner--active-top-to-bottom");
+            loaderRunner.classList.add("loader-runner-top-to-bottom");
+            setTimeout(() => {
+                loaderRunner.classList.add("loader-runner--active-top-to-bottom");
+            }, 100)
+        }
+        else
+        {
+            loaderRunner.classList.remove("loader-runner-bottom-to-top");
+            loaderRunner.classList.remove("loader-runner--active-bottom-to-top");
+            loaderRunner.classList.remove("loader-runner-top-to-bottom");
+            loaderRunner.classList.remove("loader-runner--active-top-to-bottom");
+            loaderRunner.classList.add("loader-runner-bottom-to-top");
+            setTimeout(() => {
+                loaderRunner.classList.add("loader-runner--active-bottom-to-top");
+            }, 100)
+        }
+        setTimeout(() => {
+            document.querySelector('main').innerHTML = newMain.innerHTML;
+            initPageComponents();
+            // Плавный скролл
+            window.scrollTo({
+                top: 0,//newIndex > currentPageIndex ? 0 : document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+            console.log('Content updated');
+        }, 500)
     }
 
     // Инициализация компонентов

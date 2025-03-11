@@ -825,6 +825,38 @@ footer .footer__item--social-icon {
   line-height: 1.5rem;
 }
 
+.loader-runner {
+  z-index: 10;
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  height: 130vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.loader-runner-top-to-bottom {
+  top: 130vh;
+}
+.loader-runner-bottom-to-top {
+  top: -130vh;
+}
+.loader-runner--active-top-to-bottom {
+  transition: top 1.5s ease;
+  top: -130vh;
+}
+.loader-runner--active-bottom-to-top {
+  transition: top 1.5s ease;
+  top: 130vh;
+}
+.loader-runner__title {
+  width: 300px;
+}
+.loader-runner__title img {
+  width: 100%;
+}
+
 .banner {
   width: 100%;
   height: 100vh;
