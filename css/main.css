@@ -879,7 +879,7 @@ footer .footer__item--social-icon {
   background: var(--color-gradient-photo-darker);
   z-index: 1;
 }
-.banner__img img {
+.banner__img img, .banner__img video {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -1139,6 +1139,13 @@ footer .footer__item--social-icon {
 .mestopolozhenie__map {
   width: calc(50% - 0.625rem);
   background-color: var(--color-secondary-gray);
+}
+.mestopolozhenie__map #map {
+  height: 100%;
+  width: 100%;
+}
+.mestopolozhenie__map #map .ymaps-2-1-79-map-copyrights-promo {
+  display: none;
 }
 @media (max-width: 1024px) {
   .mestopolozhenie__map {
@@ -1605,6 +1612,7 @@ footer .footer__item--social-icon {
   font-style: italic;
   font-size: 24px;
   line-height: 140%;
+  width: 34.375rem;
 }
 @media (max-width: 1024px) {
   .big-slider__item-desc {
@@ -1612,6 +1620,7 @@ footer .footer__item--social-icon {
     font-style: italic;
     font-size: 1.25rem;
     line-height: 140%;
+    width: 100%;
   }
 }
 .big-slider__item-desc b {

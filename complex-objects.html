@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="./libs/hystmodal.min.css">
     <link rel="stylesheet" href="./css/main.css">
+    <script src="https://api-maps.yandex.ru/v3/?apikey=fb687093-d404-47b8-9cb1-d734158ee9d5&amp;lang=ru_RU" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./libs/hystmodal.min.js"></script>
     <script src="https://unpkg.com/imask"></script>
@@ -27,8 +28,7 @@
                 <use href="./img/svg/sprite.svg#burger-close" xlink:href="./img/svg/sprite.svg#burger-close"></use>
               </svg>
             </button>
-          </div>
-          <div class="header__logo"><img src="./img/logo_header.svg" alt=""></div>
+          </div><a class="header__logo" href="/index.html"><img src="./img/logo_header.svg" alt=""></a>
           <div class="header__contacts"><a class="header__contacts-tel" href="tel: 88002502299">8 800 250 22 99</a>
             <button class="button header__contacts-button" data-hystmodal="#modal-form">Заказать звонок</button>
           </div>
@@ -37,17 +37,15 @@
       <div class="header__menu">
         <nav class="header__menu-links">
           <ul>
-            <li><a href="#">О проекте</a></li>
-            <li><a href="#">Обьекты комплекса</a></li>
-            <li><a href="#">Генплан</a></li>
-            <li><a href="#">Планировочные решения</a></li>
-            <li><a href="#">Комплектация номеров</a></li>
-            <li><a href="#">Локация и инфраструктура</a></li>
-            <li><a href="#">Как стать совладельцем</a></li>
-            <li><a href="#">Команда</a></li>
-            <li><a href="#">СМИ о нас</a></li>
-            <li><a href="#">Новости</a></li>
-            <li><a href="#">Местоположение</a></li>
+            <li><a href="./about.html">О проекте</a></li>
+            <li><a href="./complex-objects.html">Обьекты комплекса</a></li>
+            <li><a href="./gen-plan.html">Генплан</a></li>
+            <li><a href="./location-and-infrastructure.html">Локация и инфраструктура</a></li>
+            <li><a href="./partners.html">Как стать совладельцем</a></li>
+            <li><a href="./team.html">Команда</a></li>
+            <li><a href="./media.html">СМИ о нас</a></li>
+            <li><a href="./news.html">Новости</a></li>
+            <li><a href="./location.html">Местоположение</a></li>
           </ul>
         </nav>
         <div class="header__menu-contacts">
@@ -62,17 +60,15 @@
         <div class="header-window__grid">
           <nav class="header-window__item header-window__item--menu">
             <ul>
-              <li><a href="#">О проекте</a></li>
-              <li><a href="#">Обьекты комплекса</a></li>
-              <li><a href="#">Генплан</a></li>
-              <li><a href="#">Планировочные решения</a></li>
-              <li><a href="#">Комплектация номеров</a></li>
-              <li><a href="#">Локация и инфраструктура</a></li>
-              <li><a href="#">Как стать совладельцем</a></li>
-              <li><a href="#">Команда</a></li>
-              <li><a href="#">СМИ о нас</a></li>
-              <li><a href="#">Новости</a></li>
-              <li><a href="#">Местоположение</a></li>
+              <li><a href="./about.html">О проекте</a></li>
+              <li><a href="./complex-objects.html">Обьекты комплекса</a></li>
+              <li><a href="./gen-plan.html">Генплан</a></li>
+              <li><a href="./location-and-infrastructure.html">Локация и инфраструктура</a></li>
+              <li><a href="./partners.html">Как стать совладельцем</a></li>
+              <li><a href="./team.html">Команда</a></li>
+              <li><a href="./media.html">СМИ о нас</a></li>
+              <li><a href="./news.html">Новости</a></li>
+              <li><a href="./location.html">Местоположение</a></li>
             </ul>
           </nav>
           <div class="header-window__item header-window__item--info">
@@ -96,7 +92,7 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="big-slider__item container">
-              <div class="big-slider__item-img"><img src="https://placehold.co/1441x810.webp" alt="image"></div>
+              <div class="big-slider__item-img"><img src="./img/objects-1.webp" alt="image"></div>
               <div class="big-slider__item-text">
                 <div class="big-slider__item-main">
                   <div class="big-slider__item-subtitle"><span>Объекты комплекса</span></div>
@@ -108,37 +104,37 @@
           </div>
           <div class="swiper-slide">
             <div class="big-slider__item container">
-              <div class="big-slider__item-img"><img src="https://placehold.co/1442x810.webp" alt="image"></div>
+              <div class="big-slider__item-img"><img src="./img/objects-2.webp" alt="image"></div>
               <div class="big-slider__item-text">
                 <div class="big-slider__item-main">
                   <div class="big-slider__item-subtitle"><span>Объекты комплекса</span></div>
-                  <div class="big-slider__item-title"><span>Спа-<br>комплекс</span></div>
+                  <div class="big-slider__item-title"><span>Амфитеатр</span></div>
                 </div>
-                <div class="big-slider__item-desc"><span>Спа-комплекс площадью <b>более 2200 м²</b> <br>предлагает идеальное пространство <br>для расслабления и восстановления сил.</span></div>
+                <div class="big-slider__item-desc"><span>Центральным элементом комплекса является уникальный амфитеатр, органично вписанный в архитектуру. Его изюминкой служит <b>парящий мост</b>, плавно переходящий в зрительскую зону, который добавляет амфитеатру стиль и грацию.</span></div>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="big-slider__item container">
-              <div class="big-slider__item-img"><img src="https://placehold.co/1443x810.webp" alt="image"></div>
+              <div class="big-slider__item-img"><img src="./img/objects-3.webp" alt="image"></div>
               <div class="big-slider__item-text">
                 <div class="big-slider__item-main">
                   <div class="big-slider__item-subtitle"><span>Объекты комплекса</span></div>
-                  <div class="big-slider__item-title"><span>Спа-<br>комплекс</span></div>
+                  <div class="big-slider__item-title"><span>Бассейны</span></div>
                 </div>
-                <div class="big-slider__item-desc"><span>Спа-комплекс площадью <b>более 2200 м²</b> <br>предлагает идеальное пространство <br>для расслабления и восстановления сил.</span></div>
+                <div class="big-slider__item-desc"><span>На территории гостиничного комплекса расположены крытые <b>круглогодичные бассейны</b> и открытые бассейны, предлагающие идеальные условия для отдыха.</span></div>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="big-slider__item container">
-              <div class="big-slider__item-img"><img src="https://placehold.co/1444x810.webp" alt="image"></div>
+              <div class="big-slider__item-img"><img src="./img/objects-4.webp" alt="image"></div>
               <div class="big-slider__item-text">
                 <div class="big-slider__item-main">
                   <div class="big-slider__item-subtitle"><span>Объекты комплекса</span></div>
-                  <div class="big-slider__item-title"><span>Спа-<br>комплекс</span></div>
+                  <div class="big-slider__item-title"><span>Детская <br>зона</span></div>
                 </div>
-                <div class="big-slider__item-desc"><span>Спа-комплекс площадью <b>более 2200 м²</b> <br>предлагает идеальное пространство <br>для расслабления и восстановления сил.</span></div>
+                <div class="big-slider__item-desc"><span>Детский развлекательный комплекс отеля ориентирован на отдых с детьми и подростками в возрасте от 1 до 15 лет, предлагая <b>более 1200 м²</b> специально оборудованных зон.</span></div>
               </div>
             </div>
           </div>
@@ -180,25 +176,69 @@
         </div>
       </div>
     </div>
+    <div class="hystmodal" id="modal-form-success" aria-hidden="true">
+      <div class="hystmodal__wrap">
+        <div class="hystmodal__window" role="dialog" aria-modal="true">
+          <button class="hystmodal__close" data-hystclose>Close</button>
+          <div class="modal">
+            <div class="modal-form">
+              <form>
+                <div class="modal-form__text">
+                  <div class="modal-form__title">
+                    <h2>Спасибо</h2>
+                  </div>
+                  <div class="modal-form__desc">
+                    <p>Мы свяжемся с вами в ближайщее время</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="loader-runner">
       <div class="loader-runner__title"><img src="./img/logo_header.svg" alt=""></div>
+    </div>
+    <div class="main-form">
+      <form>
+        <div class="main-form__text">
+          <div class="main-form__title">
+            <h2>Обратная связь</h2>
+          </div>
+          <div class="main-form__desc">
+            <p>Оставьте свои контактные данные и мы свяжемся с вами в ближайшее время</p>
+          </div>
+        </div>
+        <div class="main-form__fields">
+          <input class="main-form__field" type="text" name="first_name" placeholder="Ваше имя">
+          <input class="main-form__field" type="text" name="email" placeholder="E-mail">
+          <input class="main-form__field" type="text" name="phone" placeholder="Номер телефона">
+        </div>
+        <div class="main-form__soglasie">
+          <label class="radio-checkbox">
+            <input type="checkbox" name="soglasie"/><span class="radio-mark"></span><span>Согласен с <a href='#'>политикой обработки персональных данных</a></span>
+          </label>
+        </div>
+        <div class="main-form__btn">
+          <button class="button">Оставить заявку</button>
+        </div>
+      </form>
     </div>
     <footer>
       <div class="container">
         <div class="footer__grid">
           <nav class="footer__item footer__item--menu">
             <ul>
-              <li><a href="#">О проекте</a></li>
-              <li><a href="#">Обьекты комплекса</a></li>
-              <li><a href="#">Генплан</a></li>
-              <li><a href="#">Планировочные решения</a></li>
-              <li><a href="#">Комплектация номеров</a></li>
-              <li><a href="#">Локация и инфраструктура</a></li>
-              <li><a href="#">Как стать совладельцем</a></li>
-              <li><a href="#">Команда</a></li>
-              <li><a href="#">СМИ о нас</a></li>
-              <li><a href="#">Новости</a></li>
-              <li><a href="#">Местоположение</a></li>
+              <li><a href="/about.html">О проекте</a></li>
+              <li><a href="/complex-objects.html">Обьекты комплекса</a></li>
+              <li><a href="/gen-plan.html">Генплан</a></li>
+              <li><a href="/location-and-infrastructure.html">Локация и инфраструктура</a></li>
+              <li><a href="/partners.html">Как стать совладельцем</a></li>
+              <li><a href="/team.html">Команда</a></li>
+              <li><a href="/media.html">СМИ о нас</a></li>
+              <li><a href="/news.html">Новости</a></li>
+              <li></li>
             </ul>
           </nav>
           <div class="footer__item footer__item--info">
@@ -206,8 +246,7 @@
             <div class="footer__item--info-item footer__item--info-item--email"><a href="#">agoihotel@gmail.com</a></div>
             <div class="footer__item--info-item footer__item--info-item--time"><span>10:00 – 19:00</span></div>
             <div class="footer__item--info-item footer__item--info-item--address"><span>352830 Агой, Туапсинский район Краснодарский край</span></div>
-          </div>
-          <div class="footer__item footer__item--logo"><img src="./img/logo_header.svg" alt=""></div>
+          </div><a class="footer__item footer__item--logo" href="/index.html"><img src="./img/logo_header.svg" alt=""></a>
           <div class="footer__item footer__item--social"><a href="#">
               <svg class="icon icon-dzen footer__item--social-icon">
                 <use href="./img/svg/sprite.svg#dzen" xlink:href="./img/svg/sprite.svg#dzen"></use>
