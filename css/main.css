@@ -1772,6 +1772,7 @@ footer .footer__item--social-icon {
 .main-form {
   position: relative;
   display: flex;
+  overflow: hidden;
   justify-content: center;
   background-color: var(--color-accent-black);
   padding-bottom: 3.5rem;
@@ -1785,6 +1786,8 @@ footer .footer__item--social-icon {
     background-color: transparent;
     padding-bottom: 0;
     padding-top: 4.25rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
   .main-form::after {
     content: "";
