@@ -17,16 +17,16 @@ document.addEventListener("DOMContentLoaded",(event) => {
             //"/agoy/index.html",
             //"/agoy/about.html",
             //"/agoy/complex-objects.html",
-            "./index.html",
-            "./about.html",
-            "./complex-objects.html",
-            "./media.html",
-            "./news.html",
-            "./team.html",
-            "./gen-plan.html",
-            "./location-and-infrastructure.html",
-            "./partners.html",
-            "./location.html"
+            "/agoy/index.html",
+            "/agoy/about.html",
+            "/agoy/complex-objects.html",
+            "/agoy/media.html",
+            "/agoy/news.html",
+            "/agoy/team.html",
+            "/agoy/gen-plan.html",
+            "/agoy/location-and-infrastructure.html",
+            "/agoy/partners.html",
+            "/agoy/location.html"
         ].map(normalizePath);
 
         /*Главная - / ..
