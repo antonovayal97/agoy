@@ -105,6 +105,9 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 currentPageIndex = 0;
             }
             
+            console.log("currentPageIndex: ",currentPageIndex);
+            console.log("PAGE_LINKS.length - 1: ",PAGE_LINKS.length - 1);
+
             if(currentPageIndex == PAGE_LINKS.length - 1)
             {
                 footer.style.display = "block";
