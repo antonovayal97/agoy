@@ -13,21 +13,44 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
     function initPageChanger() {
         // Конфигурация
-        const PAGE_LINKS = [
-            //"/agoy/index.html",
-            //"/agoy/about.html",
-            //"/agoy/complex-objects.html",
-            "/agoy/index.html",
-            "/agoy/about.html",
-            "/agoy/complex-objects.html",
-            "/agoy/media.html",
-            "/agoy/news.html",
-            "/agoy/team.html",
-            "/agoy/gen-plan.html",
-            "/agoy/location-and-infrastructure.html",
-            "/agoy/partners.html",
-            "/agoy/location.html"
-        ].map(normalizePath);
+        const host = window.location.hostname;
+        const isLocalhost = ['localhost', '127.0.0.1'].includes(host);
+        const isGitHubPages = host === 'antonovayal97.github.io';
+
+        const pageNames = [
+        '', // Главная страница
+        'about',
+        'complex-objects',
+        'media',
+        'news',
+        'team',
+        'gen-plan',
+        'location-and-infrastructure',
+        'partners',
+        'location'
+        ];
+
+        const PAGE_LINKS = pageNames.map(name => {
+        // Локальная разработка
+        if (isLocalhost) {
+            return name === '' 
+            ? '/index.html' 
+            : `/${name}.html`;
+        }
+        
+        // GitHub Pages
+        if (isGitHubPages) {
+            return name === ''
+            ? '/agoy/index.html'
+            : `/agoy/${name}.html`;
+        }
+
+        // Продакшен (другие домены)
+        return name === ''
+            ? '/'
+            : `/${name}/`;
+            
+        }).map(normalizePath);
 
         /*Главная - / ..
         окружение - /about ..
