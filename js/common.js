@@ -80,7 +80,18 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
         // Нормализация URL
         function normalizePath(path) {
-            return path === '/' ? '' : path.replace(/\/+$/, '').toLowerCase();
+            // Убираем дублирующиеся слеши внутри пути
+            let normalized = path.replace(/\/+/g, '/');
+            
+            // Удаляем trailing slash только для путей с .html
+            if (normalized.endsWith('.html/')) {
+                normalized = normalized.slice(0, -1);
+            }
+            
+            // Сохраняем корневой путь как '/'
+            if (normalized === '') return '/';
+            
+            return normalized;
         }
 
         // Определение текущей страницы
