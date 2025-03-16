@@ -57,6 +57,10 @@
   background: #555; /* Цвет ползунка при наведении */
 }
 
+.ayal {
+  display: block;
+}
+
 *,
 *::after,
 *::before {
