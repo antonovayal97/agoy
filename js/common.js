@@ -204,6 +204,9 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 document.querySelector('main').innerHTML = newMain.innerHTML;
                 initPageComponents();
 
+                console.log("newIndex: ",newIndex);
+                console.log("PAGE_LINKS.length - 1: ",PAGE_LINKS.length - 1);
+
                 if(newIndex == PAGE_LINKS.length - 1)
                 {
                     footer.style.display = "block";
