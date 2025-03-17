@@ -797,7 +797,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
         await ymaps3.ready;
 
-        const {YMap, YMapDefaultSchemeLayer} = ymaps3;
+        const {YMap, YMapDefaultSchemeLayer, YMapMarker} = ymaps3;
 
         // Иницилиазируем карту
         const map = new YMap(
@@ -7433,16 +7433,18 @@ document.addEventListener("DOMContentLoaded",(event) => {
 ]
         }));
 
-        // Убираем возможность изменения карты жестами (если нужно).
-        //myMap.behaviors.disable(['drag', 'scrollZoom', 'multiTouch']);
+        // Создаем метку
+        const marker = new YMapMarker(
+            {
+                coordinates: [44.146911, 39.040225], // Координаты метки
+                source: 'marker-source' // Идентификатор источника
+            },
+            // HTML-элемент метки
+            '<div class="custom-marker"></div>'
+        );
 
-        // Опционально: можно добавить метку, если потребуется.
-        //var myPlacemark = new ymaps.Placemark([44.142616089921724,39.03669298894245], {
-            //balloonContent: 'Москва'
-        //});
-        //myMap.geoObjects.add(myPlacemark);
-
-        
+        // Добавляем метку на карту
+        map.addChild(marker);
     }
 
     function initAOS()
