@@ -1559,7 +1559,7 @@ footer .footer__item--social-icon {
   height: 100%;
   background: var(--color-gradient-photo-darker);
 }
-.big-slider__item-img img {
+.big-slider__item-img img, .big-slider__item-img video {
   width: 100%;
   height: 100%;
   object-fit: cover;
