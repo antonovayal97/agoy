@@ -7443,7 +7443,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         }));
 
         ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', [
-            '@yandex/ymaps3-default-ui-theme'
+            '@yandex/ymaps3-default-ui-theme@0.0.19'
           ]);
 
         map.addChild(new YMapDefaultMarker({
