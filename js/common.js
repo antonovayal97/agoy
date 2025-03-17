@@ -824,7 +824,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         );
 
         map.addChild(new YMapDefaultFeaturesLayer()); 
-        
+
         map.addChild(new YMapDefaultSchemeLayer({
             customization: 
             [
@@ -7452,9 +7452,9 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
         map.addChild(new YMapDefaultMarker({
             coordinates: [44.146911, 39.040225],
-            title: 'Hello World!',
-            subtitle: 'kind and bright',
-            color: 'blue'
+            title: 'Агой',
+            subtitle: 'Гранд - отель',
+            color: '#CDA679'
         }));
     }
 
