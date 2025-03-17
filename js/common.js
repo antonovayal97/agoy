@@ -794,6 +794,10 @@ document.addEventListener("DOMContentLoaded",(event) => {
             console.error('Yandex Maps API not loaded!');
             return;
           }
+        if (!document.getElementById('map')) {
+        return; // Выходим из функции, если элемента нет
+        }
+
         // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
         await ymaps3.ready;
 
