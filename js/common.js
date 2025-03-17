@@ -21,12 +21,12 @@ document.addEventListener("DOMContentLoaded",(event) => {
         '', // Главная страница
         'about',
         'complex-objects',
-        'media',
-        'news',
-        'team',
         'gen-plan',
         'location-and-infrastructure',
         'partners',
+        //'team',
+        //'media',
+        //'news',
         'location'
         ];
 
@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         let scrollTimeout = null;
         let touchStartY = 0;
 
+        let scrollerTime = 800;
         // Инициализация
         initCurrentPage();
         setupEventListeners();
@@ -303,7 +304,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 scrollTimeout = setTimeout(() => {
                     e.deltaY > 0 ? navigateToPage(currentPageIndex + 1) : 
                                 navigateToPage(currentPageIndex - 1);
-                }, 350);
+                }, scrollerTime);
             }
         }
 
@@ -326,7 +327,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 scrollTimeout = setTimeout(() => {
                     deltaY < 0 ? navigateToPage(currentPageIndex + 1) : 
                                 navigateToPage(currentPageIndex - 1);
-                }, 350);
+                }, scrollerTime);
             }
         }
 
