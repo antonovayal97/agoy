@@ -74,6 +74,10 @@ document.addEventListener("DOMContentLoaded",(event) => {
         let scrollTimeout = null;
         let touchStartY = 0;
 
+        let isSliderCanVertical = {
+            up: true,
+            down: true
+        };
         let scrollerTime = 300;
         // Инициализация
         initCurrentPage();
@@ -267,7 +271,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 if (typeof initAdapt === 'function') initAdapt();
                 if (typeof initAspectRatio === 'function') initAspectRatio();
                 if (typeof initSlides === 'function') initSlides();
-                //if (typeof initMap === 'function') initMap();
+                if (typeof initMap === 'function') initMap();
                 initLinkHandlers(); // Инициализируем обработчики ссылок
                 console.log('Components initialized');
             } catch (e) {
@@ -294,11 +298,12 @@ document.addEventListener("DOMContentLoaded",(event) => {
         // Обработка скролла мышью
         function handleDesktopScroll(e) {
             if (isTransitioning || isMenuOpened) return;
-            
+
             const { isTop, isBottom } = checkScrollEdges();
             console.log(`Scroll: deltaY=${e.deltaY}, top=${isTop}, bottom=${isBottom}`);
 
             if (scrollTimeout) clearTimeout(scrollTimeout);
+
 
             if ((e.deltaY > 0 && isBottom && canGoNext()) || 
                 (e.deltaY < 0 && isTop && canGoPrev())) {
@@ -322,6 +327,16 @@ document.addEventListener("DOMContentLoaded",(event) => {
             const { isTop, isBottom } = checkScrollEdges();
             
             if (scrollTimeout) clearTimeout(scrollTimeout);
+
+
+            console.log("isSliderCanVertical.down handleTouchMove: ",isSliderCanVertical.down);
+            console.log("isSliderCanVertical.up handleTouchMove: ",isSliderCanVertical.up);
+
+            if(deltaY < -20 && isBottom && canGoNext() && !isSliderCanVertical.down) return;
+
+            if(deltaY > 20 && isTop && canGoPrev() && !isSliderCanVertical.up) return;
+            
+
 
             if ((deltaY < -20 && isBottom && canGoNext()) || 
                 (deltaY > 20 && isTop && canGoPrev())) {
@@ -512,12 +527,48 @@ document.addEventListener("DOMContentLoaded",(event) => {
                     crossFade: true
                 },
                 speed: 500,
-                direction: "horizontal",
+                direction: "vertical",
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true
+                },
+                breakpoints: {
+                    1024: {
+                        direction: "horizontal"
+                    }
+                },
+                on: {
+                    touchStart: function () {
+                        const totalSlides = bigSliderSwiper.slides.length;
+                        const isEnd = bigSliderSwiper.activeIndex === totalSlides - 1;
+
+                        if (isEnd) {
+                            console.log('Последний слайд!');
+                            isSliderCanVertical.up = false;
+                            isSliderCanVertical.down = true;
+                        }
+                        else if(bigSliderSwiper.activeIndex == 0)
+                        {
+                            
+                            isSliderCanVertical.up = true;
+                            isSliderCanVertical.down = false;
+                        }
+                        else
+                        {
+                            isSliderCanVertical.up = false;
+                            isSliderCanVertical.down = false;
+                        }
+
+                        console.log("isSliderCanVertical.down swiper: ",isSliderCanVertical.down);
+                        console.log("isSliderCanVertical.up swiper: ",isSliderCanVertical.up);
+                      },
                 }
                 });
+
+                isSliderCanVertical = {
+                    up: true,
+                    down: false
+                };
         }
         if(team != undefined)
         {
@@ -724,6 +775,11 @@ document.addEventListener("DOMContentLoaded",(event) => {
         });
     }
     async function initMap() {
+
+        if (typeof ymaps3 === 'undefined') {
+            console.error('Yandex Maps API not loaded!');
+            return;
+          }
         // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
         await ymaps3.ready;
 
@@ -7394,8 +7450,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
         mainMarginTop();
         initModals();
         fixScroller();
-        //initMap();
         initAOS();
+        initMap();
     }
 
     function onWindowResize()
