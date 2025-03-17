@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         'gen-plan',
         'location-and-infrastructure',
         'partners',
-        //'team',
+        'team',
         //'media',
         //'news',
         'location',
