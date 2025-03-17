@@ -367,7 +367,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
     }
     function mainMarginTop()
     {
-        mainEl.style.marginTop = header.querySelector(".header").clientHeight + "px";
+        //mainEl.style.marginTop = header.querySelector(".header").clientHeight + "px";
     }
     function mobileMenu()
     {
