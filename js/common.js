@@ -7454,6 +7454,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
             coordinates: [44.146911, 39.040225],
             title: 'Агой',
             subtitle: 'Гранд - отель',
+            size: 'normal',
+            iconName: 'fallback',
             color: {
                 day: '#CDA679',
                 night: '#CDA679'
