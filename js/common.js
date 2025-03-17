@@ -823,6 +823,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
             }
         );
 
+        map.addChild(new YMapDefaultFeaturesLayer()); 
+        
         map.addChild(new YMapDefaultSchemeLayer({
             customization: 
             [
