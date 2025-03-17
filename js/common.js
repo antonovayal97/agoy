@@ -7442,7 +7442,6 @@ document.addEventListener("DOMContentLoaded",(event) => {
 ]
         }));
 
-        const {YMapDefaultMarker} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
         const {YMapDefaultMarker} = await ymaps3.import('@yandex/ymaps3-markers');
         map.addChild(new YMapDefaultMarker({
             coordinates: [44.146911, 39.040225],
