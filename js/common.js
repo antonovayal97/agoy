@@ -7442,18 +7442,14 @@ document.addEventListener("DOMContentLoaded",(event) => {
 ]
         }));
 
-        // Создаем метку
-        const marker = new YMapMarker(
-            {
-                coordinates: [44.146911, 39.040225], // Координаты метки
-                source: 'marker-source' // Идентификатор источника
-            },
-            // HTML-элемент метки
-            '<div class="custom-marker"></div>'
-        );
-
-        // Добавляем метку на карту
-        map.addChild(marker);
+        const {YMapDefaultMarker} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
+        const {YMapDefaultMarker} = await ymaps3.import('@yandex/ymaps3-markers');
+        map.addChild(new YMapDefaultMarker({
+            coordinates: [44.146911, 39.040225],
+            title: 'Hello World!',
+            subtitle: 'kind and bright',
+            color: 'blue'
+        }));
     }
 
     function initAOS()
