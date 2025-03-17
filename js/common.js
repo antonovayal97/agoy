@@ -241,19 +241,24 @@ document.addEventListener("DOMContentLoaded",(event) => {
         function handleLinkClick(e) {
             const href = this.getAttribute('href');
             if (!href) return;
-    
+        
             isMenuOpened = false;
             header.classList.remove("header--active");
             body.style.overflow = null;
-
+        
             try {
-                // Парсим URL и нормализуем путь
                 const a = document.createElement('a');
                 a.href = href;
-                const path = normalizePath(new URL(a.href).pathname);
-    
-                // Ищем совпадение в PAGE_LINKS
+                const targetUrl = new URL(a.href);
+                
+                // Проверяем, является ли ссылка внешней
+                if (targetUrl.hostname !== window.location.hostname) {
+                    return; // Пропускаем обработку, переход произойдет стандартно
+                }
+        
+                const path = normalizePath(targetUrl.pathname);
                 const targetIndex = PAGE_LINKS.indexOf(path);
+                
                 if (targetIndex !== -1) {
                     e.preventDefault();
                     navigateToPage(targetIndex);
