@@ -806,7 +806,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
         await ymaps3.ready;
 
-        const {YMap, YMapDefaultSchemeLayer, YMapDefaultMarker} = ymaps3;
+        const {YMap, YMapDefaultSchemeLayer} = ymaps3;
 
         // Иницилиазируем карту
         const map = new YMap(
@@ -7441,6 +7441,10 @@ document.addEventListener("DOMContentLoaded",(event) => {
     }
 ]
         }));
+
+        ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/@yandex/ymaps3-default-ui-theme', [
+            '@yandex/ymaps3-default-ui-theme'
+          ]);
 
         map.addChild(new YMapDefaultMarker({
             coordinates: [44.146911, 39.040225],
