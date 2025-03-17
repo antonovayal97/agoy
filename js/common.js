@@ -806,7 +806,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
         await ymaps3.ready;
 
-        const {YMap, YMapDefaultSchemeLayer, YMapMarker} = ymaps3;
+        const {YMap, YMapDefaultSchemeLayer, YMapDefaultMarker} = ymaps3;
 
         // Иницилиазируем карту
         const map = new YMap(
@@ -7442,7 +7442,6 @@ document.addEventListener("DOMContentLoaded",(event) => {
 ]
         }));
 
-        const {YMapDefaultMarker} = await ymaps3.import('@yandex/ymaps3-markers');
         map.addChild(new YMapDefaultMarker({
             coordinates: [44.146911, 39.040225],
             title: 'Hello World!',
