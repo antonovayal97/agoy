@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no">
     <title>Агой</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="./libs/hystmodal.min.css">
     <link rel="stylesheet" href="./css/main.css">
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://api-maps.yandex.ru/v3/?apikey=fb687093-d404-47b8-9cb1-d734158ee9d5&amp;lang=ru_RU" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./libs/hystmodal.min.js"></script>
@@ -89,7 +91,7 @@
     </header>
     <main class="main">
       <div class="about-project">
-        <div class="about-project__description">
+        <div class="about-project__description" data-aos="fade-up">
           <div class="container">
             <div class="about-project__description-top">
               <div class="about-project__description-upper-title"><span>о проекте</span></div>
@@ -125,7 +127,7 @@
             </div>
           </div>
         </div>
-        <div class="about-project__slides">
+        <div class="about-project__slides" data-aos="fade">
           <div class="about-project__slides-swiper swiper" data-adapt=".about-project__description-middle, 1024, first" data-original-container=".about-project__slides">
             <div class="swiper-wrapper">
               <div class="swiper-slide">

@@ -7373,7 +7373,13 @@ document.addEventListener("DOMContentLoaded",(event) => {
         
     }
 
-
+    function initAOS()
+    {
+        AOS.init({
+            delay: 350,
+            once: true
+        });
+    }
 
 
     function init()
@@ -7387,6 +7393,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         initModals();
         fixScroller();
         //initMap();
+        initAOS();
     }
 
     function onWindowResize()
