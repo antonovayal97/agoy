@@ -7442,7 +7442,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
 ]
         }));
 
-        ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/@yandex/ymaps3-default-ui-theme', [
+        ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', [
             '@yandex/ymaps3-default-ui-theme'
           ]);
 
