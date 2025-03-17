@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         'location-and-infrastructure',
         'partners',
         'team',
-        //'media',
+        'media',
         //'news',
         'location',
         'dev'
