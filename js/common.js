@@ -27,7 +27,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
         //'team',
         //'media',
         //'news',
-        'location'
+        'location',
+        'dev'
         ];
 
         const PAGE_LINKS = pageNames.map(name => {
