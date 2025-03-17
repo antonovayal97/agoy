@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         let scrollTimeout = null;
         let touchStartY = 0;
 
-        let scrollerTime = 800;
+        let scrollerTime = 300;
         // Инициализация
         initCurrentPage();
         setupEventListeners();
