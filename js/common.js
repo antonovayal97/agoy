@@ -8,6 +8,14 @@ document.addEventListener("DOMContentLoaded",(event) => {
     const footer = document.querySelector("footer");
     const mainForm = document.querySelector(".main-form");
     
+    let isSliderCanVertical = {
+        up: true,
+        down: true
+    };
+
+    let canChangeScrollIfSlide = true;
+
+
     footer.style.display = "none"
     mainForm.style.display = "none"
 
@@ -73,11 +81,6 @@ document.addEventListener("DOMContentLoaded",(event) => {
         let isTransitioning = false;
         let scrollTimeout = null;
         let touchStartY = 0;
-
-        let isSliderCanVertical = {
-            up: true,
-            down: true
-        };
         let scrollerTime = 300;
         // Инициализация
         initCurrentPage();
@@ -156,7 +159,9 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 // Обновление состояния
                 currentPageIndex = newIndex;
                 window.history.pushState({ index: newIndex }, '', PAGE_LINKS[newIndex]);
-
+                canChangeScrollIfSlide = true;
+                isSliderCanVertical.up = true;
+                isSliderCanVertical.down = true;
             } catch (error) {
                 console.error('Navigation failed:', error);
             } finally {
@@ -320,6 +325,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
         }
 
         function handleTouchMove(e) {
+            if (!canChangeScrollIfSlide) return;
+
             if (isTransitioning || isMenuOpened) return;
             
             const touchY = e.touches[0].clientY;
@@ -327,10 +334,6 @@ document.addEventListener("DOMContentLoaded",(event) => {
             const { isTop, isBottom } = checkScrollEdges();
             
             if (scrollTimeout) clearTimeout(scrollTimeout);
-
-
-            console.log("isSliderCanVertical.down handleTouchMove: ",isSliderCanVertical.down);
-            console.log("isSliderCanVertical.up handleTouchMove: ",isSliderCanVertical.up);
 
             if(deltaY < -20 && isBottom && canGoNext() && !isSliderCanVertical.down) return;
 
@@ -538,37 +541,48 @@ document.addEventListener("DOMContentLoaded",(event) => {
                     }
                 },
                 on: {
-                    touchStart: function () {
+                    slideChange: function () {
                         const totalSlides = bigSliderSwiper.slides.length;
                         const isEnd = bigSliderSwiper.activeIndex === totalSlides - 1;
 
                         if (isEnd) {
-                            console.log('Последний слайд!');
+                            console.log('isEnd');
                             isSliderCanVertical.up = false;
                             isSliderCanVertical.down = true;
                         }
                         else if(bigSliderSwiper.activeIndex == 0)
                         {
-                            
+                            console.log('bigSliderSwiper.activeIndex == 0');
                             isSliderCanVertical.up = true;
                             isSliderCanVertical.down = false;
                         }
                         else
                         {
+                            console.log('else');
                             isSliderCanVertical.up = false;
                             isSliderCanVertical.down = false;
                         }
 
                         console.log("isSliderCanVertical.down swiper: ",isSliderCanVertical.down);
                         console.log("isSliderCanVertical.up swiper: ",isSliderCanVertical.up);
+
+                        canChangeScrollIfSlide = true;
                       },
                 }
                 });
 
-                isSliderCanVertical = {
-                    up: true,
-                    down: false
-                };
+                if(window.innerWidth <= 1024)
+                {
+                    isSliderCanVertical.up = true;
+                    isSliderCanVertical.down = false;
+                }
+                else
+                {
+                    canChangeScrollIfSlide = true;
+                    isSliderCanVertical.up = true;
+                    isSliderCanVertical.down = true;
+                }
+
         }
         if(team != undefined)
         {
@@ -793,7 +807,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
             // Передаём параметры инициализации карты
             {
                 location: {
-                    center: [44.142616089921724,39.03669298894245], // Координаты центра карты.
+                    center: [44.146911, 39.040225], // Координаты центра карты.
                     zoom: 15, // Масштаб карты.
                     controls: ['zoomControl']
                 }
