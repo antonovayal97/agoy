@@ -809,8 +809,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         return; // Выходим из функции, если элемента нет
         }
 
-        // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
-        await ymaps3.ready;
+       
 
         const {YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer} = ymaps3;
 
@@ -7467,6 +7466,9 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 night: '#CDA679'
             }
         }));
+
+         // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
+         await ymaps3.ready;
     }
 
     function initAOS()
