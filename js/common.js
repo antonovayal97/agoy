@@ -540,6 +540,10 @@ document.addEventListener("DOMContentLoaded",(event) => {
                     el: '.swiper-pagination',
                     clickable: true
                 },
+                navigation: {
+                    nextEl: '.big-slider__arrow--right',
+                    prevEl: '.big-slider__arrow--left',
+                },
                 breakpoints: {
                     1024: {
                         direction: "horizontal"
