@@ -143,10 +143,6 @@ body {
   overscroll-behavior-y: contain;
 }
 
-.main {
-  overflow: hidden;
-}
-
 .container {
   max-width: 100rem;
   padding-left: 4rem;
