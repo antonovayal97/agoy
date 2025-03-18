@@ -32,13 +32,13 @@ document.addEventListener("DOMContentLoaded",(event) => {
         'about',
         'complex-objects',
         'remont',
-        'gen-plan',
+        //'gen-plan',
         'location-and-infrastructure',
         'partners',
         'team',
         'media',
         //'news',
-        //'location',
+        'location',
         //'dev'
         ];
 
