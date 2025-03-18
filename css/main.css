@@ -833,6 +833,7 @@ footer .footer__item--social-icon {
 .loader-runner {
   z-index: 10;
   position: fixed;
+  top: 100vh;
   left: 0;
   width: 100vw;
   height: 130vh;

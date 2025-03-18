@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
     
     let isMenuOpened = false;
 
+    var modals;
+
     const footer = document.querySelector("footer");
     const mainForm = document.querySelector(".main-form");
     
@@ -634,7 +636,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
     }
     function initModals()
     {
-        const modals = new HystModal({
+        modals = new HystModal({
             linkAttributeName: "data-hystmodal",
             //settings (optional). see API
         });
@@ -642,6 +644,19 @@ document.addEventListener("DOMContentLoaded",(event) => {
         //modals.open("#modal-form")
         //modals.open("#modal-form-success")
        
+    }
+    function initForms()
+    {
+        var forms = document.querySelectorAll("form");
+        forms.forEach((form) => {
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                modals.close();
+                modals.open("#modal-form-success");
+                console.log("FORM SENDED");
+                form.reset();
+            })
+        })
     }
     function initMask()
     {
@@ -690,7 +705,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
               //});
         })
     }
-    function initForms() {
+    /*function initForms() {
         const allForms = document.querySelectorAll('form[data-form]');
         allForms.forEach((form) => {
             form.addEventListener('submit', function (event) {
@@ -744,7 +759,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 }
             });
         });
-    }
+    }*/
     function initAdapt() {
         // Получаем все элементы с атрибутом data-adapt
         const elements = document.querySelectorAll('[data-adapt]');
@@ -7492,6 +7507,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         fixScroller();
         initAOS();
         initMap();
+        initForms();
     }
 
     function onWindowResize()
