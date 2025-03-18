@@ -581,7 +581,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 }
                 });
 
-                if(window.innerWidth <= 1024 && document.querySelectorAll(".big-slider .swiper-slide").length > 0)
+                console.log('document.querySelectorAll(".big-slider .swiper-slide").length', document.querySelectorAll(".big-slider .swiper-slide").length)
+                if(window.innerWidth <= 1024 && document.querySelectorAll(".big-slider .swiper-slide").length > 1)
                 {
                     isSliderCanVertical.up = true;
                     isSliderCanVertical.down = false;
