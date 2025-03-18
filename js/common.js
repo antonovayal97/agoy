@@ -581,7 +581,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 }
                 });
 
-                if(window.innerWidth <= 1024)
+                if(window.innerWidth <= 1024 && document.querySelectorAll(".big-slider .swiper-slide").length > 0)
                 {
                     isSliderCanVertical.up = true;
                     isSliderCanVertical.down = false;
