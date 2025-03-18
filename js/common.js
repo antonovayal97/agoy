@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         '', // Главная страница
         'about',
         'complex-objects',
+        'remont',
         'gen-plan',
         'location-and-infrastructure',
         'partners',
@@ -36,7 +37,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         'media',
         //'news',
         'location',
-        'dev'
+        //'dev'
         ];
 
         const PAGE_LINKS = pageNames.map(name => {
