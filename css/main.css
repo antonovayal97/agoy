@@ -1618,10 +1618,7 @@ footer .footer__item--social-icon {
   font-size: 24px;
   line-height: 140%;
   width: 34.375rem;
-  background: rgba(255, 255, 255, 0.1);
-  -webkit-backdrop-filter: blur(6px); /* Safari, iOS */
-  backdrop-filter: blur(6px);
-  padding: 1rem;
+  text-shadow: 1px 1px 6px #696969, 0 0 6px #696969, 0 0 6px #696969;
 }
 @media (max-width: 1024px) {
   .big-slider__item-desc {
