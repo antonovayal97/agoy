@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         'team',
         'media',
         //'news',
-        'location',
+        //'location',
         //'dev'
         ];
 
