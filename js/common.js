@@ -836,7 +836,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
             // Передаём параметры инициализации карты
             {
                 location: {
-                    center: [39.040225, 44.146911], // Координаты центра карты.
+                    center: [39.021786, 44.141949], // Координаты центра карты.
                     zoom: 15, // Масштаб карты.
                     controls: ['zoomControl']
                 }
@@ -7471,7 +7471,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         const {YMapDefaultMarker} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
 
         map.addChild(new YMapDefaultMarker({
-            coordinates: [39.040225, 44.146911],
+            coordinates: [39.021786, 44.141949],
             title: 'Агой',
             subtitle: 'Гранд - отель',
             size: 'normal',
