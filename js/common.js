@@ -21,26 +21,13 @@ document.addEventListener("DOMContentLoaded",(event) => {
     footer.style.display = "none"
     mainForm.style.display = "none"
 
-    function initPageChanger() {
+    async function initPageChanger() {
         // Конфигурация
         const host = window.location.hostname;
         const isLocalhost = ['localhost', '127.0.0.1'].includes(host);
         const isGitHubPages = host === 'antonovayal97.github.io';
 
-        const pageNames = [
-        '', // Главная страница
-        'about',
-        'complex-objects',
-        'remont',
-        //'gen-plan',
-        'location-and-infrastructure',
-        'partners',
-        'team',
-        'media',
-        //'news',
-        'location',
-        //'dev'
-        ];
+        const pageNames = await fetchLinks();
 
         const PAGE_LINKS = pageNames.map(name => {
         // Локальная разработка
@@ -89,6 +76,27 @@ document.addEventListener("DOMContentLoaded",(event) => {
         initCurrentPage();
         setupEventListeners();
         console.log('PageChanger initialized');
+
+
+        // Функция для получения данных из API
+        async function fetchLinks() {
+            try {
+                // Выполняем запрос к API
+                const response = await fetch('https://test2.dankom.ru/api/get_menu.php');
+
+                // Проверяем, успешен ли запрос
+                if (!response.ok) {
+                    throw new Error('Ошибка при загрузке данных');
+                }
+
+                // Парсим JSON-ответ
+                let links = await response.json();
+                return links;
+            } catch (error) {
+                console.error('Ошибка:', error);
+                return [""];
+            }
+        }
 
         // Нормализация URL
         function normalizePath(path) {
