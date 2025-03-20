@@ -7491,7 +7491,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
          setTimeout(() => {
             mapContainer.style.opacity = 1;
-         },100)
+         },1500)
 
     }
 
