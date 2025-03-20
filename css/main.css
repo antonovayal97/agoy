@@ -1145,6 +1145,7 @@ footer .footer__item--social-icon {
 .mestopolozhenie__map #map {
   height: 100%;
   width: 100%;
+  transition: opacity 0.3s ease;
 }
 .mestopolozhenie__map #map .ymaps-2-1-79-map-copyrights-promo {
   display: none;
