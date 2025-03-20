@@ -7487,7 +7487,10 @@ document.addEventListener("DOMContentLoaded",(event) => {
          // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
          await ymaps3.ready;
 
-         mapContainer.style.opacity = 1;
+         setTimeout(() => {
+            mapContainer.style.opacity = 1;
+         },100)
+
     }
 
     function initAOS()
