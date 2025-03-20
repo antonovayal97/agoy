@@ -828,6 +828,9 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
         mapContainer.style.opacity = 0;
 
+        // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
+        await ymaps3.ready;
+        
         const {YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer} = ymaps3;
 
         // Иницилиазируем карту
@@ -7484,8 +7487,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
             }
         }));
 
-         // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
-         await ymaps3.ready;
+
 
          setTimeout(() => {
             mapContainer.style.opacity = 1;
