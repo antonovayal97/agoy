@@ -1140,7 +1140,7 @@ footer .footer__item--social-icon {
 }
 .mestopolozhenie__map {
   width: calc(50% - 0.625rem);
-  background-color: var(--color-brand-beige);
+  background-color: #d8b997;
 }
 .mestopolozhenie__map #map {
   height: 100%;
