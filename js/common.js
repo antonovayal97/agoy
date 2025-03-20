@@ -824,7 +824,9 @@ document.addEventListener("DOMContentLoaded",(event) => {
         return; // Выходим из функции, если элемента нет
         }
 
-       
+        var mapContainer = document.querySelector("#map");
+
+        mapContainer.style.opacity = 0;
 
         const {YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer} = ymaps3;
 
@@ -7484,6 +7486,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
          // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
          await ymaps3.ready;
+
+         mapContainer.style.opacity = 1;
     }
 
     function initAOS()
