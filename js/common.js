@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
     const header = document.querySelector("header");
     const mainEl = document.querySelector("main");
     
+    let phoneValid = [false,false,false,false,false,false];
+
     let isMenuOpened = false;
 
     var modals;
@@ -698,12 +700,19 @@ document.addEventListener("DOMContentLoaded",(event) => {
         }
 
         // Инициализация обработчиков форм
-        document.querySelectorAll('form').forEach(form => {
+        document.querySelectorAll('form').forEach((form, index) => {
             const submitHandler = (e) => {
-            e.preventDefault();
-            modals.close();
-            modals.open("#modal-form-success");
-            console.log("FORM SENDED");
+                if(phoneValid[index])
+                {
+                    e.preventDefault();
+                    modals.close();
+                    modals.open("#modal-form-success");
+                    console.log("FORM SENDED");
+                }
+                else
+                {
+                    form.querySelector("[data-phone]").reportValidity();
+                }
             };
             
             // Сохраняем ссылку на обработчик
@@ -711,10 +720,11 @@ document.addEventListener("DOMContentLoaded",(event) => {
             form.addEventListener('submit', submitHandler);
         });
     }
+
     function initMask()
     {
         var phones = document.querySelectorAll('[data-phone]');
-        phones.forEach((phone) => {
+        phones.forEach((phone, index) => {
             var phoneMask = IMask(phone, {
                     mask: '+{7}(000)000-00-00',
                     lazy: false
@@ -722,8 +732,10 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
               phoneMask.on('accept', () => {
                 if (phoneMask.masked.isComplete) {
+                    phoneValid[index] = true;
                     phone.setCustomValidity('');
                 } else {
+                    phoneValid[index] = false;
                     phone.setCustomValidity('Заполните поле полностью');
                 }
               });
