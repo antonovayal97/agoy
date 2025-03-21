@@ -663,6 +663,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
         if(popupForm)
         {
+            popupForm.querySelector("form").action = "/api/send_form.php";
             popupFormCallers.forEach((caller) => {
                 caller.addEventListener("click", () => {
                     popupForm.querySelector(".modal-form__title h2").innerText = (caller.dataset.formTitle) ? caller.dataset.formTitle : "";
