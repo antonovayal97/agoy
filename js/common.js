@@ -657,6 +657,25 @@ document.addEventListener("DOMContentLoaded",(event) => {
     }
     function initForms()
     {
+
+        var popupFormCallers = document.querySelectorAll('[data-hystmodal="#modal-form"]');
+        var popupForm = document.querySelector("#modal-form");
+
+        if(popupForm)
+        {
+            popupFormCallers.forEach((caller) => {
+                caller.addEventListener("click", () => {
+                    popupForm.querySelector(".modal-form__title h2").innerText = (caller.dataset.formTitle) ? caller.dataset.formTitle : "";
+                    popupForm.querySelector(".modal-form__desc p").innerText = (caller.dataset.formDesc) ? caller.dataset.formDesc : "";
+                    if(popupForm.querySelector('[data-form-name="Форма стандартная"]'))
+                    {
+                        popupForm.querySelector('[data-form-name="Форма стандартная"]').value = (caller.dataset.formName) ? caller.dataset.formName : "";
+                    }
+                })
+            })
+        }
+
+
         var forms = document.querySelectorAll("form");
         forms.forEach((form) => {
             form.addEventListener("submit", (e) => {
