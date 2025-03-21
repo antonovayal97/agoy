@@ -664,7 +664,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 modals.close();
                 modals.open("#modal-form-success");
                 console.log("FORM SENDED");
-                form.reset();
+                //form.reset();
             })
         })
     }
