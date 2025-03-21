@@ -715,10 +715,18 @@ document.addEventListener("DOMContentLoaded",(event) => {
     {
         var phones = document.querySelectorAll('[data-phone]');
         phones.forEach((phone) => {
-            IMask(phone, {
+            var phoneMask = IMask(phone, {
                     mask: '+{7}(000)000-00-00',
                     lazy: false
               })
+
+              phoneMask.on('accept', () => {
+                if (phoneMask.masked.isComplete) {
+                    phone.setCustomValidity('');
+                } else {
+                    phone.setCustomValidity('Заполните поле полностью');
+                }
+              });
         })
     }
     /*function initForms() {
