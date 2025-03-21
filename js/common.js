@@ -732,6 +732,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                     lazy: false
               })
 
+              phone.setCustomValidity('Заполните поле полностью');
               phoneMask.on('accept', () => {
                 if (phoneMask.masked.isComplete) {
                     phoneValid[index] = true;
