@@ -295,6 +295,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 if (typeof initAspectRatio === 'function') initAspectRatio();
                 if (typeof initSlides === 'function') initSlides();
                 if (typeof initMap === 'function') initMap();
+                if (typeof initForms === 'function') initForms();
                 initLinkHandlers(); // Инициализируем обработчики ссылок
                 console.log('Components initialized');
             } catch (e) {
@@ -655,38 +656,59 @@ document.addEventListener("DOMContentLoaded",(event) => {
         //modals.open("#modal-form-success")
        
     }
-    function initForms()
-    {
+    // Сохраняем ссылки на обработчики
+    let formSubmitHandlers = new WeakMap();
+    let popupClickHandlers = new WeakMap();
 
-        var popupFormCallers = document.querySelectorAll('[data-hystmodal="#modal-form"]');
-        var popupForm = document.querySelector("#modal-form");
+    function initForms() {
+        // Удаляем старые обработчики событий
+        document.querySelectorAll('[data-hystmodal="#modal-form"]').forEach(caller => {
+            const handler = popupClickHandlers.get(caller);
+            if (handler) {
+            caller.removeEventListener('click', handler);
+            }
+        });
 
-        if(popupForm)
-        {
-            popupForm.querySelector("form").action = "/api/send_form.php";
-            popupFormCallers.forEach((caller) => {
-                caller.addEventListener("click", () => {
-                    popupForm.querySelector(".modal-form__title h2").innerText = (caller.dataset.formTitle) ? caller.dataset.formTitle : "Обратная связь";
-                    popupForm.querySelector(".modal-form__desc p").innerText = (caller.dataset.formDesc) ? caller.dataset.formDesc : "";
-                    if(popupForm.querySelector('[data-form-name="Форма стандартная"]'))
-                    {
-                        popupForm.querySelector('[data-form-name="Форма стандартная"]').value = (caller.dataset.formName) ? caller.dataset.formName : "Обратная связь";
-                    }
-                })
-            })
+        document.querySelectorAll('form').forEach(form => {
+            const handler = formSubmitHandlers.get(form);
+            if (handler) {
+            form.removeEventListener('submit', handler);
+            }
+        });
+
+        // Новая инициализация
+        const popupFormCallers = document.querySelectorAll('[data-hystmodal="#modal-form"]');
+        const popupForm = document.querySelector("#modal-form");
+
+        if (popupForm) {
+            popupFormCallers.forEach(caller => {
+            const clickHandler = () => {
+                popupForm.querySelector(".modal-form__title h2").innerText = caller.dataset.formTitle || "Обратная связь";
+                popupForm.querySelector(".modal-form__desc p").innerText = caller.dataset.formDesc || "";
+                
+                if (popupForm.querySelector('[data-form-name="Форма стандартная"]')) {
+                popupForm.querySelector('[data-form-name="Форма стандартная"]').value = caller.dataset.formName || "Обратная связь";
+                }
+            };
+            
+            // Сохраняем ссылку на обработчик
+            popupClickHandlers.set(caller, clickHandler);
+            caller.addEventListener('click', clickHandler);
+            });
         }
 
-
-        var forms = document.querySelectorAll("form");
-        forms.forEach((form) => {
-            form.addEventListener("submit", (e) => {
-                //e.preventDefault();
-                modals.close();
-                modals.open("#modal-form-success");
-                console.log("FORM SENDED");
-                //form.reset();
-            })
-        })
+        // Инициализация обработчиков форм
+        document.querySelectorAll('form').forEach(form => {
+            const submitHandler = (e) => {
+            modals.close();
+            modals.open("#modal-form-success");
+            console.log("FORM SENDED");
+            };
+            
+            // Сохраняем ссылку на обработчик
+            formSubmitHandlers.set(form, submitHandler);
+            form.addEventListener('submit', submitHandler);
+        });
     }
     function initMask()
     {
