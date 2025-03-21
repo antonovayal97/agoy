@@ -712,49 +712,12 @@ document.addEventListener("DOMContentLoaded",(event) => {
     }
     function initMask()
     {
-        var phones = document.querySelectorAll('input[name="phone"]');
+        var phones = document.querySelectorAll('[data-phone]');
         phones.forEach((phone) => {
             IMask(phone, {
-                mask: [
-                  {
-                    mask: '+000 00 0000000',
-                    startsWith: '998',
-                    lazy: false,
-                    country: 'Узбекистан'
-                  },
-                  {
-                    mask: '+000-00-000-0000',
-                    startsWith: '992',
-                    lazy: false,
-                    country: 'Таджикистан'
-                  },
-                  {
-                    mask: '+000 (000) 000-000',
-                    startsWith: '996',
-                    lazy: false,
-                    country: 'Кыргызстан'
-                  },
-                  {
-                    mask: '+0 (000) 000-00-00',
-                    startsWith: '7',
-                    lazy: false,
-                    country: 'Russia'
-                  },
-                  {
-                    mask: '0000000000000',
-                    startsWith: '',
-                    country: 'Страна не определена'
-                  }
-                ],
-                dispatch: (appended, dynamicMasked) => {
-                  const number = (dynamicMasked.value + appended).replace(/\D/g,'');
-              
-                  return dynamicMasked.compiledMasks.find(m => number.indexOf(m.startsWith) === 0);
-                }
+                    mask: '+{7}(000)000-00-00',
+                    lazy: false
               })
-              //.on('accept', function() {
-              //  document.getElementById('dispatch-value').innerHTML = dispatchMask.masked.currentMask.country;
-              //});
         })
     }
     /*function initForms() {
@@ -7569,6 +7532,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         initAOS();
         initMap();
         initForms();
+        initMask();
     }
 
     function onWindowResize()
