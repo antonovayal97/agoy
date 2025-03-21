@@ -686,8 +686,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 popupForm.querySelector(".modal-form__title h2").innerText = caller.dataset.formTitle || "Обратная связь";
                 popupForm.querySelector(".modal-form__desc p").innerText = caller.dataset.formDesc || "";
                 
-                if (popupForm.querySelector('[data-form-name="Форма стандартная"]')) {
-                popupForm.querySelector('[data-form-name="Форма стандартная"]').value = caller.dataset.formName || "Обратная связь";
+                if (popupForm.querySelector('[data-form-name]')) {
+                popupForm.querySelector('[data-form-name]').value = caller.dataset.formName || "Обратная связь";
                 }
             };
             
@@ -700,6 +700,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         // Инициализация обработчиков форм
         document.querySelectorAll('form').forEach(form => {
             const submitHandler = (e) => {
+            e.preventDefault();
             modals.close();
             modals.open("#modal-form-success");
             console.log("FORM SENDED");
