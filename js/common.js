@@ -666,11 +666,11 @@ document.addEventListener("DOMContentLoaded",(event) => {
             popupForm.querySelector("form").action = "/api/send_form.php";
             popupFormCallers.forEach((caller) => {
                 caller.addEventListener("click", () => {
-                    popupForm.querySelector(".modal-form__title h2").innerText = (caller.dataset.formTitle) ? caller.dataset.formTitle : "";
+                    popupForm.querySelector(".modal-form__title h2").innerText = (caller.dataset.formTitle) ? caller.dataset.formTitle : "Обратная связь";
                     popupForm.querySelector(".modal-form__desc p").innerText = (caller.dataset.formDesc) ? caller.dataset.formDesc : "";
                     if(popupForm.querySelector('[data-form-name="Форма стандартная"]'))
                     {
-                        popupForm.querySelector('[data-form-name="Форма стандартная"]').value = (caller.dataset.formName) ? caller.dataset.formName : "";
+                        popupForm.querySelector('[data-form-name="Форма стандартная"]').value = (caller.dataset.formName) ? caller.dataset.formName : "Обратная связь";
                     }
                 })
             })
