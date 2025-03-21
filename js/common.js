@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
     const mainEl = document.querySelector("main");
     
     let phoneValid = [false,false,false,false,false,false];
-
+    let canSendForm = true;
     let isMenuOpened = false;
 
     var modals;
@@ -707,6 +707,10 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 {
                     e.preventDefault();
 
+                    if(!canSendForm) return
+
+                    canSendForm = false;
+
                     const form = e.target;
                     const formData = new FormData(form); // Собираем данные формы
                   
@@ -732,6 +736,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                         console.log("FORM ERROR");
                     }
 
+                    canSendForm = true;
                     
                 }
                 else
