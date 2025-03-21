@@ -27,7 +27,9 @@ document.addEventListener("DOMContentLoaded",(event) => {
         const isLocalhost = ['localhost', '127.0.0.1'].includes(host);
         const isGitHubPages = host === 'antonovayal97.github.io';
 
-        const pageNames = await fetchLinks();
+        var pageNames = await fetchLinks();
+
+        pageNames.unshift("");
 
         const PAGE_LINKS = pageNames.map(name => {
         // Локальная разработка
