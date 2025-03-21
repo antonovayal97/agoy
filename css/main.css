@@ -141,6 +141,10 @@ body {
   color: var(--color-accent-black);
   font-family: "Arsenal", sans-serif;
   overscroll-behavior-y: contain;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased; /* Сглаживание для WebKit браузеров */
+  -moz-osx-font-smoothing: grayscale; /* Сглаживание для Firefox на macOS */
+  font-smooth: always;
 }
 
 .container {
