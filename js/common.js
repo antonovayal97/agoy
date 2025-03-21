@@ -726,6 +726,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
                     
                         const result = await response.json();
 
+                        form.reset();
+                        
                         modals.close();
                         modals.open("#modal-form-success");
                         console.log("FORM SENDED");
