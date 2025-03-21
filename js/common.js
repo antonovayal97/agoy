@@ -702,13 +702,37 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
         // Инициализация обработчиков форм
         document.querySelectorAll('form').forEach((form, index) => {
-            const submitHandler = (e) => {
+            const submitHandler = async (e) => {
                 if(phoneValid[index])
                 {
                     e.preventDefault();
-                    modals.close();
-                    modals.open("#modal-form-success");
-                    console.log("FORM SENDED");
+
+                    const form = e.target;
+                    const formData = new FormData(form); // Собираем данные формы
+                  
+                    try {
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            body: formData, // FormData автоматически установит Content-Type: multipart/form-data
+                        });
+                    
+                        if (!response.ok) {
+                            throw new Error(`Ошибка HTTP: ${response.status}`);
+                        }
+                    
+                        const result = await response.json();
+
+                        modals.close();
+                        modals.open("#modal-form-success");
+                        console.log("FORM SENDED");
+                    
+                    } catch (error) {
+                        modals.close();
+                        modals.open("#modal-form-fail");
+                        console.log("FORM ERROR");
+                    }
+
+                    
                 }
                 else
                 {
