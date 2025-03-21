@@ -683,6 +683,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         const popupForm = document.querySelector("#modal-form");
 
         if (popupForm) {
+            popupForm.querySelector("form").action = "/api/send_form.php"
             popupFormCallers.forEach(caller => {
             const clickHandler = () => {
                 popupForm.querySelector(".modal-form__title h2").innerText = caller.dataset.formTitle || "Обратная связь";
