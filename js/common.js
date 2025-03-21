@@ -711,6 +711,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 }
                 else
                 {
+                    e.preventDefault();
+                    
                     form.querySelector("[data-phone]").reportValidity();
                 }
             };
