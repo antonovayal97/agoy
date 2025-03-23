@@ -605,7 +605,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                     const slide = document.querySelector(hash);
                     if (slide) {
                         const slideIndex = Array.from(slide.parentElement.children).indexOf(slide);
-                        swiper.slideTo(slideIndex);
+                        bigSliderSwiper.slideTo(slideIndex);
                     }
                     }
                 }
