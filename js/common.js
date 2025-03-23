@@ -719,8 +719,9 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 {
                     e.preventDefault();
 
+                    console.log("submitHandler")
                     if(!canSendForm) return
-
+                    console.log("canSendForm: true")
                     canSendForm = false;
 
                     const form = e.target;
