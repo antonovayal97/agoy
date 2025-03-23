@@ -221,10 +221,12 @@ document.addEventListener("DOMContentLoaded",(event) => {
             const parser = new DOMParser();
             const newDoc = parser.parseFromString(html, 'text/html');
             const newMain = newDoc.querySelector('main');
+            const newTitle = newDoc.querySelector('title');
             
             if (!newMain) throw new Error('Main content not found');
+        
+            document.title = newTitle.textContent;
             
-
             if(newIndex > currentPageIndex)
             {
                 loaderRunner.classList.remove("loader-runner-bottom-to-top");
