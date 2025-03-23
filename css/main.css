@@ -1768,6 +1768,9 @@ footer .footer__item--social-icon {
 .team__swiper {
   margin-top: 3.5rem;
 }
+.team__swiper .big-slider__arrow {
+  background: rgba(210, 210, 210, 0.2);
+}
 @media (max-width: 1024px) {
   .team__swiper {
     margin-top: 3rem;

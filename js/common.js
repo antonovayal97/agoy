@@ -671,7 +671,11 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 fadeEffect: {
                     crossFade: true
                 },
-                speed: 500
+                speed: 500,
+                navigation: {
+                    nextEl: '.big-slider__arrow--right',
+                    prevEl: '.big-slider__arrow--left',
+                }
                 });
         }
     }
