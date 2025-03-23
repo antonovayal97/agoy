@@ -130,6 +130,9 @@ document.addEventListener("DOMContentLoaded",(event) => {
             if (currentPageIndex === -1) {
                 console.warn('Unknown URL, working in 404 mode');
                 is404Page = true;
+                 // Показываем элементы для 404
+                if (footer) footer.style.display = "block";
+                if (mainForm) mainForm.style.display = "flex";
                 return;
             }
             
@@ -239,6 +242,12 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 console.log("newIndex: ",newIndex);
                 console.log("PAGE_LINKS.length - 1: ",PAGE_LINKS.length - 1);
 
+                // Для 404 и неизвестных страниц показываем элементы
+                if (is404Page || newIndex === -1) {
+                    if (footer) footer.style.display = "block";
+                    if (mainForm) mainForm.style.display = "flex";
+                } 
+                
                 if(newIndex == PAGE_LINKS.length - 1)
                 {
                     footer.style.display = "block";
