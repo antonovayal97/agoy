@@ -70,6 +70,9 @@
   padding-top: 5rem;
   padding-bottom: 2rem;
 }
+.plan-solutions__wrap iframe {
+  margin-top: 2rem;
+}
 
 *,
 *::after,
