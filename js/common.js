@@ -170,24 +170,36 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
         // Навигация
         async function navigateToPage(newIndex) {
-            if (is404Page || newIndex === currentPageIndex || isTransitioning) return;
+            if (isTransitioning) return;
             
             console.log(`Navigating from ${currentPageIndex} to ${newIndex}`);
             isTransitioning = true;
-
+        
             try {
-                // Загрузка контента
+                // Всегда проверяем валидность нового индекса
+                if (newIndex < 0 || newIndex >= PAGE_LINKS.length) {
+                    throw new Error('Invalid page index');
+                }
+        
                 const content = await fetchPageContent(PAGE_LINKS[newIndex]);
                 updatePageContent(content, newIndex);
-
-                // Обновление состояния
+        
+                // Обновляем состояние после успешной загрузки
                 currentPageIndex = newIndex;
                 window.history.pushState({ index: newIndex }, '', PAGE_LINKS[newIndex]);
+                
+                // Сбрасываем флаг 404 при успешной навигации
+                is404Page = false;
+                
                 canChangeScrollIfSlide = true;
                 isSliderCanVertical.up = true;
                 isSliderCanVertical.down = true;
             } catch (error) {
                 console.error('Navigation failed:', error);
+                // При ошибке переходим в 404 режим
+                is404Page = true;
+                if (footer) footer.style.display = "block";
+                if (mainForm) mainForm.style.display = "flex";
             } finally {
                 setTimeout(() => {
                     isTransitioning = false;
@@ -281,18 +293,20 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 a.href = href;
                 const targetUrl = new URL(a.href);
                 
-                if (targetUrl.hostname !== window.location.hostname) {
-                    return; // Внешние ссылки обрабатываются стандартно
+                // Для внутренних ссылок всегда пытаемся найти в PAGE_LINKS
+                if (targetUrl.hostname === window.location.hostname) {
+                    const path = normalizePath(targetUrl.pathname);
+                    const targetIndex = PAGE_LINKS.indexOf(path);
+                    
+                    if (targetIndex !== -1) {
+                        e.preventDefault();
+                        navigateToPage(targetIndex);
+                        return;
+                    }
                 }
-    
-                const path = normalizePath(targetUrl.pathname);
-                const targetIndex = PAGE_LINKS.indexOf(path);
                 
-                if (targetIndex !== -1) {
-                    e.preventDefault();
-                    navigateToPage(targetIndex);
-                }
-                // Если индекс не найден - переход будет выполнен стандартно
+                // Для внешних ссылок и не найденных внутренних разрешаем стандартное поведение
+                console.log('Allowing default navigation');
             } catch (error) {
                 console.error('Error processing link:', error);
             }
