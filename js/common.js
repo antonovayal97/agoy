@@ -25,6 +25,10 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
     async function initPageChanger() {
         // Конфигурация
+
+        // Добавляем флаг для 404 состояния
+        let is404Page = false;
+
         const host = window.location.hostname;
         const isLocalhost = ['localhost', '127.0.0.1'].includes(host);
         const isGitHubPages = host === 'antonovayal97.github.io';
@@ -124,10 +128,12 @@ document.addEventListener("DOMContentLoaded",(event) => {
             currentPageIndex = PAGE_LINKS.findIndex(link => link === currentPath);
             
             if (currentPageIndex === -1) {
-                console.warn('Unknown URL, redirecting to home');
-                window.history.replaceState({ index: 0 }, '', '/');
-                currentPageIndex = 0;
+                console.warn('Unknown URL, working in 404 mode');
+                is404Page = true;
+                return;
             }
+            
+            is404Page = false;
             
             console.log("currentPageIndex: ",currentPageIndex);
             console.log("PAGE_LINKS.length - 1: ",PAGE_LINKS.length - 1);
@@ -161,7 +167,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
         // Навигация
         async function navigateToPage(newIndex) {
-            if (newIndex === currentPageIndex || isTransitioning) return;
+            if (is404Page || newIndex === currentPageIndex || isTransitioning) return;
             
             console.log(`Navigating from ${currentPageIndex} to ${newIndex}`);
             isTransitioning = true;
@@ -266,11 +272,10 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 a.href = href;
                 const targetUrl = new URL(a.href);
                 
-                // Проверяем, является ли ссылка внешней
                 if (targetUrl.hostname !== window.location.hostname) {
-                    return; // Пропускаем обработку, переход произойдет стандартно
+                    return; // Внешние ссылки обрабатываются стандартно
                 }
-        
+    
                 const path = normalizePath(targetUrl.pathname);
                 const targetIndex = PAGE_LINKS.indexOf(path);
                 
@@ -278,6 +283,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                     e.preventDefault();
                     navigateToPage(targetIndex);
                 }
+                // Если индекс не найден - переход будет выполнен стандартно
             } catch (error) {
                 console.error('Error processing link:', error);
             }
@@ -324,7 +330,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
         // Обработка скролла мышью
         function handleDesktopScroll(e) {
-            if (isTransitioning || isMenuOpened) return;
+            if (isTransitioning || isMenuOpened || is404Page) return;
 
             const { isTop, isBottom } = checkScrollEdges();
             console.log(`Scroll: deltaY=${e.deltaY}, top=${isTop}, bottom=${isBottom}`);
@@ -349,7 +355,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         function handleTouchMove(e) {
             if (!canChangeScrollIfSlide) return;
 
-            if (isTransitioning || isMenuOpened) return;
+            if (isTransitioning || isMenuOpened || is404Page) return;
             
             const touchY = e.touches[0].clientY;
             const deltaY = touchY - touchStartY;
