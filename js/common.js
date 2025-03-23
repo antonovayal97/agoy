@@ -595,7 +595,26 @@ document.addEventListener("DOMContentLoaded",(event) => {
                         canChangeScrollIfSlide = true;
                       },
                 }
-                });
+            });
+
+
+                // Функция для перехода к слайду по якорю
+                function goToSlideByHash() {
+                    const hash = window.location.hash;
+                    if (hash) {
+                    const slide = document.querySelector(hash);
+                    if (slide) {
+                        const slideIndex = Array.from(slide.parentElement.children).indexOf(slide);
+                        swiper.slideTo(slideIndex);
+                    }
+                    }
+                }
+
+                // Переход к слайду при загрузке страницы
+                goToSlideByHash();
+
+                // Переход к слайду при изменении хэша
+                window.addEventListener('hashchange', goToSlideByHash);
 
                 console.log('document.querySelectorAll(".big-slider .swiper-slide").length', document.querySelectorAll(".big-slider .swiper-slide").length)
                 if(window.innerWidth <= 1024 && document.querySelectorAll(".big-slider .swiper-slide").length > 1)
