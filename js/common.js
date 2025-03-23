@@ -715,6 +715,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         // Инициализация обработчиков форм
         document.querySelectorAll('form').forEach((form, index) => {
             const submitHandler = async (e) => {
+                console.log("phoneValid",phoneValid);
                 if(phoneValid[index])
                 {
                     e.preventDefault();
