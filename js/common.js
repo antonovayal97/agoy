@@ -756,6 +756,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 }
                 else
                 {
+                    console.log("else")
                     e.preventDefault();
                     
                     form.querySelector("[data-phone]").reportValidity();
