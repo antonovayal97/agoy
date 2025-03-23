@@ -682,8 +682,19 @@ document.addEventListener("DOMContentLoaded",(event) => {
         // Новая инициализация
         const popupFormCallers = document.querySelectorAll('[data-hystmodal="#modal-form"]');
         const popupForm = document.querySelector("#modal-form");
+        const footerForm = document.querySelector(".main-form");
 
-        if (popupForm) {
+        if (footerForm)
+        {
+            footerForm.querySelector("form").action = "/api/send_form.php";
+            if (footerForm.querySelector('[data-form-name]'))
+            {
+                footerForm.querySelector('[data-form-name]').value = "Форма в подвале";
+            }
+        }
+
+        if (popupForm)
+        {
             popupForm.querySelector("form").action = "/api/send_form.php"
             popupFormCallers.forEach(caller => {
             const clickHandler = () => {
