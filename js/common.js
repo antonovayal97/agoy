@@ -277,7 +277,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                     //behavior: 'smooth'
                 });
                 console.log('Content updated');
-            }, 500)
+            }, 110)
         }
 
         function handleLinkClick(e) {
