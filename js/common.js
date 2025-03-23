@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
             if (currentPageIndex === -1) {
                 console.warn('Unknown URL, working in 404 mode');
                 is404Page = true;
-                document.title = 'Страница не найдена | AGOY'; // Добавляем title для 404
+                 // Показываем элементы для 404
                 if (footer) footer.style.display = "block";
                 if (mainForm) mainForm.style.display = "flex";
                 return;
@@ -213,25 +213,15 @@ document.addEventListener("DOMContentLoaded",(event) => {
             console.log('Fetching:', url);
             const response = await fetch(url);
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            
-            // Получаем текст и title одновременно
-            const html = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            
-            return {
-                content: doc.querySelector('main')?.innerHTML || '',
-                title: doc.querySelector('title')?.textContent || 'AGOY'
-            };
+            return await response.text();
         }
 
         // Обновление DOM
-        function updatePageContent(data, newIndex) {
-            const { content, title } = data;
+        function updatePageContent(html, newIndex) {
             const parser = new DOMParser();
-            const newDoc = parser.parseFromString(content, 'text/html');
+            const newDoc = parser.parseFromString(html, 'text/html');
             const newMain = newDoc.querySelector('main');
-
+            
             if (!newMain) throw new Error('Main content not found');
             
 
@@ -259,7 +249,6 @@ document.addEventListener("DOMContentLoaded",(event) => {
             }
             setTimeout(() => {
                 document.querySelector('main').innerHTML = newMain.innerHTML;
-                document.title = title; // Устанавливаем новый заголовок
                 initPageComponents();
 
                 console.log("newIndex: ",newIndex);
