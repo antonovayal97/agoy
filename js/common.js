@@ -716,6 +716,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
         document.querySelectorAll('form').forEach((form, index) => {
             const submitHandler = async (e) => {
                 console.log("phoneValid",phoneValid);
+                console.log("index",index);
+                
                 if(phoneValid[index])
                 {
                     e.preventDefault();
