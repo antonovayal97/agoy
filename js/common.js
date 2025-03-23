@@ -633,7 +633,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 function goToSlideByHash() {
                     const hash = window.location.hash;
                     if (hash) {
-                    const slide = document.querySelector(hash);
+                    const slide = document.querySelector(hash.replace(/\//g, ''));
                     if (slide) {
                         const slideIndex = Array.from(slide.parentElement.children).indexOf(slide);
                         bigSliderSwiper.slideTo(slideIndex);
