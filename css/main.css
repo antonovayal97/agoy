@@ -74,6 +74,14 @@
   margin-top: 2rem;
 }
 
+.static__wrap {
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+}
+.static__content {
+  margin-top: 2rem;
+}
+
 *,
 *::after,
 *::before {
