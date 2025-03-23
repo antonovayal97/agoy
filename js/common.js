@@ -298,6 +298,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 if (typeof initSlides === 'function') initSlides();
                 if (typeof initMap === 'function') initMap();
                 if (typeof initForms === 'function') initForms();
+                if (typeof initTableTabs === 'function') initTableTabs();
                 initLinkHandlers(); // Инициализируем обработчики ссылок
                 console.log('Components initialized');
             } catch (e) {
@@ -727,7 +728,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                         const result = await response.json();
 
                         form.reset();
-                        
+
                         modals.close();
                         modals.open("#modal-form-success");
                         console.log("FORM SENDED");
@@ -7573,6 +7574,25 @@ document.addEventListener("DOMContentLoaded",(event) => {
             once: true
         });
     }
+    
+    function initTableTabs()
+    {
+        document.querySelectorAll('.invest__tab').forEach(tab => {
+            tab.addEventListener('click', function (e) {
+                e.preventDefault();
+              // Убираем активный класс у всех табов
+              document.querySelectorAll('.invest__tab').forEach(t => t.classList.remove('invest__tab--active'));
+              // Добавляем активный класс текущему табу
+              this.classList.add('invest__tab--active');
+          
+              // Скрываем все таблицы
+              document.querySelectorAll('.invest__table table').forEach(table => table.classList.remove('invest__table--active'));
+              // Показываем таблицу с соответствующим data-table-id
+              const tableId = this.getAttribute('data-table');
+              document.querySelector(`.invest__table table[data-table-id="${tableId}"]`).classList.add('invest__table--active');
+            });
+        });
+    }
 
 
     function init()
@@ -7589,6 +7609,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         initMap();
         initForms();
         initMask();
+        initTableTabs();
     }
 
     function onWindowResize()

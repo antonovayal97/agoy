@@ -34,6 +34,11 @@
   font-weight: 700;
   font-style: italic;
 }
+@font-face {
+  font-family: "", sans-serif;
+  src: url("path/to/your/font.woff2") format("woff2");
+  unicode-range: U+0021; /* Unicode для символа '!' */
+}
 /* Стилизация скроллбара */
 *::-webkit-scrollbar {
   width: 12px; /* Ширина скроллбара */
@@ -1941,4 +1946,95 @@ footer .footer__item--social-icon {
 }
 .main-form__soglasie a {
   text-decoration: underline;
+}
+
+.invest__wrap {
+  padding-top: 5rem;
+  padding-bottom: 8rem;
+}
+.invest__tabs {
+  display: flex;
+  gap: 2.25rem;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 1024px) {
+  .invest__tabs {
+    gap: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 2.4rem;
+  }
+}
+.invest__tab {
+  color: var(--color-secondary-gray);
+}
+.invest__tab-name {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.875rem;
+  text-transform: uppercase;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 0.0625rem solid var(--color-secondary-gray);
+}
+.invest__tab-sq {
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+.invest__tab--active {
+  color: var(--color-brand-beige);
+}
+.invest__tab--active .invest__tab-name {
+  border-bottom: 0.0625rem solid var(--color-brand-beige);
+}
+@media (max-width: 1024px) {
+  .invest__table {
+    overflow-x: auto;
+  }
+}
+.invest__table--active {
+  display: table !important;
+}
+.invest__table table {
+  display: none;
+  width: 100%;
+  border-spacing: 0;
+}
+@media (max-width: 1024px) {
+  .invest__table table {
+    width: 200%;
+  }
+}
+.invest__table table thead tr th {
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  padding: 0;
+  padding-bottom: 1.5rem;
+  border-bottom: 0.0625rem solid var(--color-accent-black);
+}
+.invest__table table tbody tr td {
+  padding: 1.75rem 0;
+  border-bottom: 0.0625rem solid var(--color-secondary-gray);
+  text-align: center;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.4rem;
+}
+.invest__table table tbody tr td:first-child {
+  width: 19.5rem;
+  text-align: left;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+@media (max-width: 1024px) {
+  .invest__table table tbody tr td:first-child {
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.4rem;
+    width: 10.5rem;
+  }
 }

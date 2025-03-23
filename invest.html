@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no">
+    <title>Агой</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./libs/hystmodal.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://api-maps.yandex.ru/v3/?apikey=7e60ed15-47d4-4ed5-b669-91961afa7dd4&amp;lang=ru_RU" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./libs/hystmodal.min.js"></script>
+    <script src="./libs/imask.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header">
+          <div class="header__burger">
+            <button class="touchable header__burger--opener">
+              <svg class="icon icon-burger ">
+                <use href="./img/svg/sprite.svg#burger" xlink:href="./img/svg/sprite.svg#burger"></use>
+              </svg>
+            </button>
+            <button class="touchable header__burger--closer">
+              <svg class="icon icon-burger-close ">
+                <use href="./img/svg/sprite.svg#burger-close" xlink:href="./img/svg/sprite.svg#burger-close"></use>
+              </svg>
+            </button>
+          </div><a class="header__logo" href="./index.html"><img src="./img/logo_header.svg" alt=""></a>
+          <div class="header__contacts"><a class="header__contacts-tel" href="tel: 88002227799">8 800 222 77 99</a>
+            <button class="button header__contacts-button" data-hystmodal="#modal-form">Заказать звонок</button>
+          </div>
+        </div>
+      </div>
+      <div class="header-window">
+        <div class="header-window__grid">
+          <nav class="header-window__item header-window__item--menu">
+            <ul>
+              <li><a href="./about.html">О проекте</a></li>
+              <li><a href="./complex-objects.html">Обьекты комплекса</a></li>
+              <li><a href="./gen-plan.html">Генплан</a></li>
+              <li><a href="./location-and-infrastructure.html">Локация и инфраструктура</a></li>
+              <li><a href="./partners.html">Как стать совладельцем</a></li>
+              <li><a href="./location.html">Местоположение</a></li>
+            </ul>
+          </nav>
+          <div class="header-window__item header-window__item--info">
+            <div class="header-window__item--info-item header-window__item--info-item--tel"><a href="tel: 88002227799">8 800 222 77 99</a><a class="vyzov" href="#">Заказать звонок</a></div>
+            <div class="header-window__item--info-item header-window__item--info-item--email"><a href="mailto: info@gh-agoy.ru">info@gh-agoy.ru</a></div>
+            <div class="header-window__item--info-item header-window__item--info-item--time"><span>10:00 – 19:00</span></div>
+            <div class="header-window__item--info-item header-window__item--info-item--address"><span>352830 Агой, Туапсинский район Краснодарский край</span></div>
+          </div>
+          <div class="header-window__item header-window__item--social"><a href="https://dzen.ru/agoytuapse" target="_blank">
+              <svg class="icon icon-dzen header-window__item--social-icon">
+                <use href="./img/svg/sprite.svg#dzen" xlink:href="./img/svg/sprite.svg#dzen"></use>
+              </svg></a><a href="https://vk.com/agoyresort" target="_blank">
+              <svg class="icon icon-vk header-window__item--social-icon">
+                <use href="./img/svg/sprite.svg#vk" xlink:href="./img/svg/sprite.svg#vk"></use>
+              </svg></a><a href="https://pin.it/8VXeXdSZ4" target="_blank">
+              <svg class="icon icon-pinterest header-window__item--social-icon">
+                <use href="./img/svg/sprite.svg#pinterest" xlink:href="./img/svg/sprite.svg#pinterest"></use>
+              </svg></a><a href="https://t.me/hotelagoy" target="_blank">
+              <svg class="icon icon-telegram header-window__item--social-icon">
+                <use href="./img/svg/sprite.svg#telegram" xlink:href="./img/svg/sprite.svg#telegram"></use>
+              </svg></a></div>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="invest">
+        <div class="invest__wrap container">
+          <div class="view__title" data-aos="fade-right">
+            <h2>инвестиционный <br>расчёт</h2>
+          </div>
+          <div class="invest__tabs"><a class="invest__tab invest__tab--active" href="#" data-table="1">
+              <div class="invest__tab-name"><span>Standart</span></div>
+              <div class="invest__tab-sq"><span>28 кв.м</span></div></a><a class="invest__tab" href="#" data-table="2">
+              <div class="invest__tab-name"><span>Family</span></div>
+              <div class="invest__tab-sq"><span>35 кв.м</span></div></a><a class="invest__tab" href="#" data-table="3">
+              <div class="invest__tab-name"><span>President</span></div>
+              <div class="invest__tab-sq"><span>60 кв.м</span></div></a></div>
+          <div class="invest__table">
+            <table class="invest__table--active" data-table-id="1">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>2030</th>
+                  <th>2031</th>
+                  <th>2032</th>
+                  <th>2033</th>
+                  <th>2034</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Загрузка</td>
+                  <td>51,27%</td>
+                  <td>55,00%</td>
+                  <td>58,00%</td>
+                  <td>62,00%</td>
+                  <td>65,00%</td>
+                </tr>
+                <tr>
+                  <td>Средний тариф (ADR)</td>
+                  <td>22 116</td>
+                  <td>24 328</td>
+                  <td>26 760</td>
+                  <td>29 436</td>
+                  <td>32 380</td>
+                </tr>
+                <tr>
+                  <td>Доход юнита, год</td>
+                  <td>4 138 792</td>
+                  <td>4 883 770</td>
+                  <td>5 680 694</td>
+                  <td>6 661 462</td>
+                  <td>7 682 170</td>
+                </tr>
+                <tr>
+                  <td>Оперционные расходы</td>
+                  <td>1 655 517</td>
+                  <td>1 953 508</td>
+                  <td>2 272 278</td>
+                  <td>2 664 585</td>
+                  <td>3 072 868</td>
+                </tr>
+                <tr>
+                  <td>Операционная прибыль (EBITDA)</td>
+                  <td>2 402 131</td>
+                  <td>2 841 004</td>
+                  <td>3 310 232</td>
+                  <td>3 888 875</td>
+                  <td>4 490 499</td>
+                </tr>
+              </tbody>
+            </table>
+            <table data-table-id="2">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>2030</th>
+                  <th>2031</th>
+                  <th>2032</th>
+                  <th>2033</th>
+                  <th>2034</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Загрузка</td>
+                  <td>51,27%</td>
+                  <td>55,00%</td>
+                  <td>58,00%</td>
+                  <td>62,00%</td>
+                  <td>65,00%</td>
+                </tr>
+                <tr>
+                  <td>Средний тариф (ADR)</td>
+                  <td>38 703</td>
+                  <td>42 573</td>
+                  <td>46 831</td>
+                  <td>51 514</td>
+                  <td>56 665</td>
+                </tr>
+                <tr>
+                  <td>Доход юнита, год</td>
+                  <td>7 242 886</td>
+                  <td>8 546 598</td>
+                  <td>9 941 215</td>
+                  <td>11 657 559</td>
+                  <td>13 443 798</td>
+                </tr>
+                <tr>
+                  <td>Оперционные расходы</td>
+                  <td>2 897 154</td>
+                  <td>3 418 639</td>
+                  <td>3 976 486</td>
+                  <td>4 663 024</td>
+                  <td>5 377 519</td>
+                </tr>
+                <tr>
+                  <td>Операционная прибыль (EBITDA)</td>
+                  <td>4 244 302</td>
+                  <td>5 016 386</td>
+                  <td>5 841 999</td>
+                  <td>6 859 532</td>
+                  <td>7 917 775</td>
+                </tr>
+              </tbody>
+            </table>
+            <table data-table-id="3">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>2030</th>
+                  <th>2031</th>
+                  <th>2032</th>
+                  <th>2033</th>
+                  <th>2034</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Загрузка</td>
+                  <td>51,27%</td>
+                  <td>55,00%</td>
+                  <td>58,00%</td>
+                  <td>62,00%</td>
+                  <td>65,00%</td>
+                </tr>
+                <tr>
+                  <td>Средний тариф (ADR)</td>
+                  <td>53 030</td>
+                  <td>58 333</td>
+                  <td>64 167</td>
+                  <td>70 583</td>
+                  <td>77 642</td>
+                </tr>
+                <tr>
+                  <td>Доход юнита, год</td>
+                  <td>9 924 078</td>
+                  <td>11 710 401</td>
+                  <td>13 621 282</td>
+                  <td>15 972 988</td>
+                  <td>18 420 461</td>
+                </tr>
+                <tr>
+                  <td>Оперционные расходы</td>
+                  <td>3 969 631</td>
+                  <td>4 684 161</td>
+                  <td>5 448 513</td>
+                  <td>6 389 195</td>
+                  <td>7 368 185</td>
+                </tr>
+                <tr>
+                  <td>Операционная прибыль (EBITDA)</td>
+                  <td>5 780 567</td>
+                  <td>6 834 973</td>
+                  <td>7 962 375</td>
+                  <td>9 352 358</td>
+                  <td>10 797 699</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="hystmodal" id="modal-form" aria-hidden="true">
+      <div class="hystmodal__wrap">
+        <div class="hystmodal__window" role="dialog" aria-modal="true">
+          <button class="hystmodal__close" data-hystclose>Close</button>
+          <div class="modal">
+            <div class="modal-form">
+              <form>
+                <div class="modal-form__text">
+                  <div class="modal-form__title">
+                    <h2>Название анкеты <br>в 2 строчки</h2>
+                  </div>
+                  <div class="modal-form__desc">
+                    <p>Краткое описание формы или пояснение к заполнению полей</p>
+                  </div>
+                </div>
+                <div class="modal-form__fields">
+                  <input class="modal-form__field" type="text" name="first_name" placeholder="Ваше имя">
+                  <input class="modal-form__field" type="text" name="email" placeholder="E-mail">
+                  <input class="modal-form__field" type="text" name="phone" placeholder="Номер телефона" data-phone>
+                </div>
+                <div class="modal-form__soglasie">
+                  <label class="radio-checkbox">
+                    <input type="checkbox" name="soglasie"/><span class="radio-mark"></span><span>Согласен с <a href='#'>политикой обработки персональных данных</a></span>
+                  </label>
+                </div>
+                <div class="modal-form__btn">
+                  <button class="button">Оставить заявку</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hystmodal" id="modal-form-success" aria-hidden="true">
+      <div class="hystmodal__wrap">
+        <div class="hystmodal__window" role="dialog" aria-modal="true">
+          <button class="hystmodal__close" data-hystclose>Close</button>
+          <div class="modal">
+            <div class="modal-form">
+              <form>
+                <div class="modal-form__text">
+                  <div class="modal-form__title">
+                    <h2>Спасибо</h2>
+                  </div>
+                  <div class="modal-form__desc">
+                    <p>Мы свяжемся с вами в ближайщее время</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="loader-runner">
+      <div class="loader-runner__title"><img src="./img/logo_header.svg" alt=""></div>
+    </div>
+    <div class="main-form">
+      <form>
+        <div class="main-form__text">
+          <div class="main-form__title">
+            <h2>Обратная связь</h2>
+          </div>
+          <div class="main-form__desc">
+            <p>Оставьте свои контактные данные и мы свяжемся с вами в ближайшее время</p>
+          </div>
+        </div>
+        <div class="main-form__fields">
+          <input class="main-form__field" type="text" name="first_name" placeholder="Ваше имя">
+          <input class="main-form__field" type="text" name="email" placeholder="E-mail">
+          <input class="main-form__field" type="text" name="phone" placeholder="Номер телефона" data-phone>
+        </div>
+        <div class="main-form__soglasie">
+          <label class="radio-checkbox">
+            <input type="checkbox" name="soglasie"/><span class="radio-mark"></span><span>Согласен с <a href='#'>политикой обработки персональных данных</a></span>
+          </label>
+        </div>
+        <div class="main-form__btn">
+          <button class="button">Оставить заявку</button>
+        </div>
+      </form>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="footer__grid">
+          <nav class="footer__item footer__item--menu">
+            <ul>
+              <li><a href="./about.html">О проекте</a></li>
+              <li><a href="./complex-objects.html">Обьекты комплекса</a></li>
+              <li><a href="./gen-plan.html">Генплан</a></li>
+              <li><a href="./location-and-infrastructure.html">Локация и инфраструктура</a></li>
+              <li><a href="./partners.html">Как стать совладельцем</a></li>
+              <li></li>
+            </ul>
+          </nav>
+          <div class="footer__item footer__item--info">
+            <div class="footer__item--info-item footer__item--info-item--tel"><a href="tel: 88002227799">8 800 222 77 99</a></div>
+            <div class="footer__item--info-item footer__item--info-item--email"><a href="mailto: info@gh-agoy.ru">info@gh-agoy.ru</a></div>
+            <div class="footer__item--info-item footer__item--info-item--time"><span>10:00 – 19:00</span></div>
+            <div class="footer__item--info-item footer__item--info-item--address"><span>352830 Агой, Туапсинский район Краснодарский край</span></div>
+          </div><a class="footer__item footer__item--logo" href="./index.html"><img src="./img/logo_header.svg" alt=""></a>
+          <div class="footer__item footer__item--social"><a href="https://dzen.ru/agoytuapse" target="_blank">
+              <svg class="icon icon-dzen footer__item--social-icon">
+                <use href="./img/svg/sprite.svg#dzen" xlink:href="./img/svg/sprite.svg#dzen"></use>
+              </svg></a><a href="https://vk.com/agoyresort" target="_blank">
+              <svg class="icon icon-vk footer__item--social-icon">
+                <use href="./img/svg/sprite.svg#vk" xlink:href="./img/svg/sprite.svg#vk"></use>
+              </svg></a><a href="https://pin.it/8VXeXdSZ4" target="_blank">
+              <svg class="icon icon-pinterest footer__item--social-icon">
+                <use href="./img/svg/sprite.svg#pinterest" xlink:href="./img/svg/sprite.svg#pinterest"></use>
+              </svg></a><a href="https://t.me/hotelagoy" target="_blank">
+              <svg class="icon icon-telegram footer__item--social-icon">
+                <use href="./img/svg/sprite.svg#telegram" xlink:href="./img/svg/sprite.svg#telegram"></use>
+              </svg></a></div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/common.js"></script>
+  </body>
+</html>
