@@ -66,6 +66,11 @@
   display: block;
 }
 
+.plan-solutions__wrap {
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+}
+
 *,
 *::after,
 *::before {
