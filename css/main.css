@@ -2098,6 +2098,11 @@ footer .footer__item--social-icon {
   margin-top: 2rem;
   height: 90vh;
 }
+@media (max-width: 1024px) {
+  .v3d__content {
+    height: 75vh;
+  }
+}
 
 .v404 {
   height: 100vh;
