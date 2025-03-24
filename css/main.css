@@ -82,6 +82,15 @@
   margin-top: 2rem;
 }
 
+.v3d__wrap {
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+}
+.v3d__content {
+  margin-top: 2rem;
+  height: 90vh;
+}
+
 *,
 *::after,
 *::before {
