@@ -708,6 +708,21 @@ footer .footer__item--info-item--legal {
   font-size: 1.25rem;
   line-height: 1.5rem;
 }
+footer .footer__item--info-item--conf {
+  margin-top: auto;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-transform: uppercase;
+}
+@media (max-width: 1024px) {
+  footer .footer__item--info-item--conf {
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.625rem;
+    text-transform: uppercase;
+  }
+}
 footer .footer__item--logo {
   grid-area: logo;
   padding: 0 5rem;
