@@ -1237,7 +1237,7 @@ footer .footer__item--social-icon {
 
 .partners__wrap {
   padding-top: 5rem;
-  padding-bottom: 2rem;
+  padding-bottom: 5rem;
 }
 .partners__payments {
   margin-top: 6.75rem;
@@ -1345,6 +1345,7 @@ footer .footer__item--social-icon {
   text-align: center;
 }
 .partners__our {
+  display: none;
   margin-top: 12rem;
   margin-bottom: 4rem;
 }
