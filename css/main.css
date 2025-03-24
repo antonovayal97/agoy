@@ -6,7 +6,8 @@
   --color-secondary-gray: #D2D2D2;
   --color-white: #FFFFFF;
   --color-gradient-brand-gold: linear-gradient(64.15deg, #B39067 4.93%, #EDC892 48.93%, #B39067 92.93%);
-  --color-gradient-photo-darker: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  --color-gradient-photo-darker: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  --color-mobile-gradient-photo-darker: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
   --transition-default: all .2s ease;
 }
 
@@ -1589,6 +1590,11 @@ footer .footer__item--social-icon {
   height: 100%;
   background: var(--color-gradient-photo-darker);
 }
+@media (max-width: 1024px) {
+  .big-slider__item-img::after {
+    background: var(--color-mobile-gradient-photo-darker);
+  }
+}
 .big-slider__item-img img, .big-slider__item-img video {
   width: 100%;
   height: 100%;
@@ -1650,7 +1656,6 @@ footer .footer__item--social-icon {
   font-size: 24px;
   line-height: 140%;
   width: 34.375rem;
-  text-shadow: 2px 2px 6px #696969, 2px 2px 6px #696969, 2px 2px 6px #696969;
 }
 @media (max-width: 1024px) {
   .big-slider__item-desc {
