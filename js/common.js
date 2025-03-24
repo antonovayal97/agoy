@@ -433,9 +433,9 @@ document.addEventListener("DOMContentLoaded",(event) => {
         const isScrollingUp = touchY > lastTouchY;
         lastTouchY = touchY;
 
-        if (window.scrollY === 0 && isScrollingUp) {
-            e.preventDefault();
-        }
+        ///if (window.scrollY === 0 && isScrollingUp) {
+         //   e.preventDefault();
+        //}
         }, { passive: false });
     }
     function mainMarginTop()
