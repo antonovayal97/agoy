@@ -800,6 +800,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
                         modals.close();
                         modals.open("#modal-form-success");
+                        ym(99214093,'reachGoal','Lead')
                         console.log("FORM SENDED");
                     
                     } catch (error) {
