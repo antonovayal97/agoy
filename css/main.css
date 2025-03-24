@@ -7,7 +7,7 @@
   --color-white: #FFFFFF;
   --color-gradient-brand-gold: linear-gradient(64.15deg, #B39067 4.93%, #EDC892 48.93%, #B39067 92.93%);
   --color-gradient-photo-darker: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
-  --color-mobile-gradient-photo-darker: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  --color-mobile-gradient-photo-darker: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
   --transition-default: all .2s ease;
 }
 
