@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         async function fetchLinks() {
             try {
                 // Выполняем запрос к API
-                const response = await fetch('https://test2.dankom.ru/api/get_menu.php');
+                const response = await fetch('https://grand-hotel-agoy.ru/api/get_menu.php');
 
                 // Проверяем, успешен ли запрос
                 if (!response.ok) {
