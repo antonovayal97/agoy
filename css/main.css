@@ -702,6 +702,12 @@ footer .footer__item--info-item--address {
   font-size: 1.5rem;
   line-height: 1.875rem;
 }
+footer .footer__item--info-item--legal {
+  margin-top: 2rem;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
 footer .footer__item--logo {
   grid-area: logo;
   padding: 0 5rem;
