@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         let isTransitioning = false;
         let scrollTimeout = null;
         let touchStartY = 0;
-        let scrollerTime = 200;
+        let scrollerTime = 250;
         // Инициализация
         initCurrentPage();
         setupEventListeners();
@@ -399,7 +399,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 scrollTimeout = setTimeout(() => {
                     deltaY < 0 ? navigateToPage(currentPageIndex + 1) : 
                                 navigateToPage(currentPageIndex - 1);
-                }, scrollerTime);
+                }, scrollerTime * 2);
             }
         }
 
