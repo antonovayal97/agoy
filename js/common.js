@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
             return {
                 isTop: scrollY <= 50,
-                isBottom: scrollY >= maxScroll - 50 || documentHeight <= windowHeight
+                isBottom: scrollY >= maxScroll - 50 || documentHeight <= windowHeight || isSliderCanVertical.down
             };
         }
 
