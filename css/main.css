@@ -1616,7 +1616,7 @@ footer .footer__item--social-icon {
     padding-top: 5rem;
     flex-direction: column;
     justify-content: space-between;
-    height: calc(100vh - 5rem);
+    height: calc(100vh - 10rem);
   }
 }
 .big-slider__item-subtitle {
