@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         }
 
         // Проверка границ скролла
-        /*function checkScrollEdges() {
+        function checkScrollEdges() {
             const scrollY = window.scrollY;
             const documentHeight = document.documentElement.scrollHeight;
             const windowHeight = window.innerHeight;
@@ -164,26 +164,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
             return {
                 isTop: scrollY <= 50,
-                isBottom: scrollY >= maxScroll - 50 || documentHeight <= windowHeight
-            };
-        }*/
-        
-        function checkScrollEdges() {
-            const scrollY = window.scrollY || window.pageYOffset;
-            const documentHeight = Math.max(
-                document.body.scrollHeight,
-                document.documentElement.scrollHeight,
-                document.body.offsetHeight,
-                document.documentElement.offsetHeight,
-                document.body.clientHeight,
-                document.documentElement.clientHeight
-            );
-            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-            const maxScroll = Math.max(documentHeight - windowHeight, 0);
-        
-            return {
-                isTop: scrollY <= 50,
-                isBottom: scrollY >= maxScroll - 50 || windowHeight >= documentHeight
+                isBottom: scrollY >= maxScroll - 50 || documentHeight <= windowHeight || documentHeight == windowHeight
             };
         }
 
