@@ -165,6 +165,10 @@ document.addEventListener("DOMContentLoaded",(event) => {
             console.log("documentHeight:",documentHeight);
             console.log("windowHeight:",windowHeight);
 
+            console.log("scrollY:",scrollY);
+            console.log("maxScroll:",maxScroll);
+
+
             return {
                 isTop: scrollY <= 50,
                 isBottom: scrollY >= maxScroll - 50 || documentHeight <= windowHeight
