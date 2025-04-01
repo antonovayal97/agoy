@@ -389,6 +389,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
             
             if (scrollTimeout) clearTimeout(scrollTimeout);
 
+            console.log("checkScrollEdges()",checkScrollEdges())
             console.log("if(deltaY < -20 && isBottom && canGoNext() && !isSliderCanVertical.down):",deltaY < -20 && isBottom && canGoNext() && !isSliderCanVertical.down);
             console.log("if(deltaY > 20 && isTop && canGoPrev() && !isSliderCanVertical.up):",deltaY > 20 && isTop && canGoPrev() && !isSliderCanVertical.up);
     
