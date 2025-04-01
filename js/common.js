@@ -380,6 +380,9 @@ document.addEventListener("DOMContentLoaded",(event) => {
         function handleTouchMove(e) {
             if (!canChangeScrollIfSlide) return;
 
+            console.log("isTransitioning:",isTransitioning);
+            console.log("isMenuOpened:",isMenuOpened);
+            console.log("is404Page:",is404Page);
             if (isTransitioning || isMenuOpened || is404Page) return;
             
             const touchY = e.touches[0].clientY;
