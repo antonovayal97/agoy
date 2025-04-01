@@ -2044,11 +2044,11 @@ footer .footer__item--social-icon {
   line-height: 1.5rem;
   font-weight: 700;
   padding: 0;
-  padding-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
   border-bottom: 0.0625rem solid var(--color-accent-black);
 }
 .invest__table table tbody tr td {
-  padding: 1.75rem 0;
+  padding: 1.25rem 0;
   border-bottom: 0.0625rem solid var(--color-secondary-gray);
   text-align: center;
   font-weight: 400;
