@@ -978,6 +978,7 @@ footer .footer__item--social-icon {
   }
 }
 .banner button {
+  margin-bottom: 1rem;
   transform: scale(1.5);
   transform-origin: bottom left;
 }
