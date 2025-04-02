@@ -968,6 +968,7 @@ footer .footer__item--social-icon {
   .banner__title {
     gap: 3rem;
     left: 0.75rem;
+    bottom: 7rem;
   }
   .banner__title h1 {
     font-weight: 700;
