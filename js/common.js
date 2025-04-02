@@ -337,6 +337,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 if (typeof initMap === 'function') initMap();
                 if (typeof initForms === 'function') initForms();
                 if (typeof initTableTabs === 'function') initTableTabs();
+                if (typeof initIframeBtns === 'function') initIframeBtns();
+
                 initLinkHandlers(); // Инициализируем обработчики ссылок
                 console.log('Components initialized');
             } catch (e) {
@@ -7678,6 +7680,27 @@ document.addEventListener("DOMContentLoaded",(event) => {
         });
     }
 
+    function initIframeBtns() {
+        // Получаем все кнопки с data-iframe атрибутом
+        var btns = document.querySelectorAll("[data-iframe]");
+        var modalIframe = document.querySelector(".modal-iframe-iframe");
+    
+        if(modalIframe) {
+            btns.forEach((btn) => {
+                // Сначала удаляем предыдущий обработчик (если был)
+                btn.removeEventListener("click", btn.iframeClickHandler);
+                
+                // Создаем новый обработчик
+                btn.iframeClickHandler = () => {
+                    modalIframe.src = btn.dataset.iframe;
+                };
+                
+                // Добавляем обработчик
+                btn.addEventListener("click", btn.iframeClickHandler);
+            });
+        }
+    }
+
 
     function init()
     {
@@ -7694,6 +7717,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         initForms();
         initMask();
         initTableTabs();
+        initIframeBtns();
     }
 
     function onWindowResize()

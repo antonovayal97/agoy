@@ -769,11 +769,38 @@ footer .footer__item--social-icon {
   }
 }
 
+@media (max-width: 1024px) {
+  #modal-iframe .hystmodal__close {
+    top: -2.5rem;
+    right: 0rem;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' stroke='%23fff' stroke-linecap='square' stroke-miterlimit='50' stroke-width='2' d='M22 2L2 22'/%3E%3Cpath fill='none' stroke='%23fff' stroke-linecap='square' stroke-miterlimit='50' stroke-width='2' d='M2 2l20 20'/%3E%3C/svg%3E");
+  }
+}
+
 .modal {
   padding: 2rem;
   background-color: var(--color-white);
   border-radius: 2rem;
   width: 25rem;
+}
+.modal__iframe {
+  width: auto;
+  border-radius: 0;
+  padding: 0;
+  line-height: 0;
+}
+.modal__iframe iframe {
+  width: 90vw;
+  height: 90vh;
+}
+@media (max-width: 1024px) {
+  .modal__iframe {
+    width: auto !important;
+  }
+  .modal__iframe iframe {
+    width: calc(100vw - 3rem);
+    height: 85vh;
+  }
 }
 @media (max-width: 1024px) {
   .modal {
@@ -923,6 +950,11 @@ footer .footer__item--social-icon {
   z-index: 2;
   bottom: 4rem;
   left: 4rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 7rem;
+  align-items: flex-end;
   color: var(--color-white);
 }
 .banner__title h1 {
@@ -934,6 +966,7 @@ footer .footer__item--social-icon {
 }
 @media (max-width: 1024px) {
   .banner__title {
+    gap: 3rem;
     left: 0.75rem;
   }
   .banner__title h1 {
@@ -943,6 +976,10 @@ footer .footer__item--social-icon {
     text-transform: uppercase;
     letter-spacing: -0.12rem;
   }
+}
+.banner button {
+  transform: scale(1.5);
+  transform-origin: bottom left;
 }
 
 .about-project {
