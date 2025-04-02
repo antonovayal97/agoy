@@ -966,6 +966,7 @@ footer .footer__item--social-icon {
 }
 @media (max-width: 1024px) {
   .banner__title {
+    flex-direction: column;
     gap: 3rem;
     left: 0.75rem;
     bottom: 7rem;
