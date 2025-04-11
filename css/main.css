@@ -953,8 +953,10 @@ footer .footer__item--social-icon {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 7rem;
-  align-items: flex-end;
+  flex-direction: column;
+  width: calc(100% - 8rem);
+  gap: 3.75rem;
+  align-items: flex-start;
   color: var(--color-white);
 }
 .banner__title h1 {
@@ -971,6 +973,7 @@ footer .footer__item--social-icon {
     gap: 3rem;
     left: 0.75rem;
     bottom: 7rem;
+    width: calc(100% - 1.5rem);
   }
   .banner__title h1 {
     font-weight: 700;
@@ -981,9 +984,18 @@ footer .footer__item--social-icon {
   }
 }
 .banner button {
-  margin-bottom: 1rem;
-  transform: scale(1.5);
-  transform-origin: bottom left;
+  align-self: center;
+  margin-bottom: 0;
+  font-weight: 400;
+  font-size: 1.375rem;
+  line-height: 1.25em;
+  padding: 0.7rem 6rem;
+  padding-top: 0.5rem;
+}
+@media (max-width: 1024px) {
+  .banner button {
+    width: 100%;
+  }
 }
 
 .about-project {
