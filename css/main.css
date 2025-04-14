@@ -2044,6 +2044,11 @@ footer .footer__item--social-icon {
   padding-top: 5rem;
   padding-bottom: 8rem;
 }
+@media (max-width: 1024px) {
+  .invest__wrap {
+    padding-bottom: 8rem;
+  }
+}
 .invest__tabs {
   display: flex;
   gap: 2.25rem;
