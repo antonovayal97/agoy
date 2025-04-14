@@ -403,14 +403,13 @@ document.addEventListener("DOMContentLoaded",(event) => {
             console.log("if(deltaY > 20 && isTop && canGoPrev() && !isSliderCanVertical.up):",deltaY > 20 && isTop && canGoPrev() && !isSliderCanVertical.up);
     
 
-            if(deltaY < -20 && isBottom && canGoNext() && !isSliderCanVertical.down) return;
+            if(deltaY > 0 && isBottom && canGoNext() && !isSliderCanVertical.down) return;
 
-            if(deltaY > 20 && isTop && canGoPrev() && !isSliderCanVertical.up) return;
+            if(deltaY < 0 && isTop && canGoPrev() && !isSliderCanVertical.up) return;
             
 
-
-            if ((deltaY < -20 && isBottom && canGoNext()) || 
-                (deltaY > 20 && isTop && canGoPrev())) {
+            if ((deltaY > 0 && isBottom && canGoNext()) || 
+                (deltaY < 0 && isTop && canGoPrev())) {
                 scrollTimeout = setTimeout(() => {
                     deltaY < 0 ? navigateToPage(currentPageIndex + 1) : 
                                 navigateToPage(currentPageIndex - 1);
