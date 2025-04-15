@@ -371,15 +371,41 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
             if (scrollTimeout) clearTimeout(scrollTimeout);
 
-            // Переход только если мы достигли края страницы
-            if (e.deltaY > 0 && isBottom && canGoNext()) {
+            // Только если мы на краю И пытаемся скроллить за пределы
+            if ((e.deltaY > 0 && isBottom && canGoNext()) || 
+                (e.deltaY < 0 && isTop && canGoPrev())) {
+                e.preventDefault(); // Предотвращаем стандартный скролл
                 scrollTimeout = setTimeout(() => {
-                    navigateToPage(currentPageIndex + 1);
+                    e.deltaY > 0 ? navigateToPage(currentPageIndex + 1) : 
+                                navigateToPage(currentPageIndex - 1);
                 }, scrollerTime * 0.75);
-            } else if (e.deltaY < 0 && isTop && canGoPrev()) {
+            }
+        }
+
+        // Обработка тач-событий
+        function handleTouchMove(e) {
+            if (!canChangeScrollIfSlide || isTransitioning || isMenuOpened || is404Page) return;
+            
+            const touchY = e.touches[0].clientY;
+            const deltaY = touchY - touchStartY;
+            const { isTop, isBottom } = checkScrollEdges();
+            
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+
+            // Блокировка если слайдер может скроллиться вертикально
+            if ((deltaY > 0 && !isSliderCanVertical.up) || 
+                (deltaY < 0 && !isSliderCanVertical.down)) {
+                e.preventDefault();
+            }
+
+            // Только если на краю И пытаемся скроллить за пределы
+            if ((deltaY < 0 && isBottom && canGoNext()) || 
+                (deltaY > 0 && isTop && canGoPrev())) {
+                e.preventDefault();
                 scrollTimeout = setTimeout(() => {
-                    navigateToPage(currentPageIndex - 1);
-                }, scrollerTime * 0.75);
+                    deltaY < 0 ? navigateToPage(currentPageIndex + 1) : 
+                                navigateToPage(currentPageIndex - 1);
+                }, scrollerTime * 1.25);
             }
         }
 
@@ -388,31 +414,6 @@ document.addEventListener("DOMContentLoaded",(event) => {
             touchStartY = e.touches[0].clientY;
         }
 
-        function handleTouchMove(e) {
-            if (!canChangeScrollIfSlide) return;
-            if (isTransitioning || isMenuOpened || is404Page) return;
-            
-            const touchY = e.touches[0].clientY;
-            const deltaY = touchY - touchStartY;
-            const { isTop, isBottom } = checkScrollEdges();
-            
-            if (scrollTimeout) clearTimeout(scrollTimeout);
-
-            // Блокировка, если слайдер может прокручиваться вертикально
-            if (deltaY > 0 && isBottom && canGoNext() && !isSliderCanVertical.down) return;
-            if (deltaY < 0 && isTop && canGoPrev() && !isSliderCanVertical.up) return;
-            
-            // Переход только если мы достигли края страницы
-            if (deltaY < 0 && isBottom && canGoNext()) {
-                scrollTimeout = setTimeout(() => {
-                    navigateToPage(currentPageIndex + 1);
-                }, scrollerTime * 1.25);
-            } else if (deltaY > 0 && isTop && canGoPrev()) {
-                scrollTimeout = setTimeout(() => {
-                    navigateToPage(currentPageIndex - 1);
-                }, scrollerTime * 1.25);
-            }
-        }
 
         // Обработка истории
         function handlePopState(e) {
