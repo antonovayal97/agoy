@@ -1465,7 +1465,7 @@ footer .footer__item--social-icon {
 }
 .smi__wrap {
   padding-top: 5rem;
-  padding-bottom: 2rem;
+  padding-bottom: 10rem;
 }
 .smi__banner {
   margin: 3.5rem calc(50% - 50vw);
@@ -2042,7 +2042,7 @@ footer .footer__item--social-icon {
 
 .invest__wrap {
   padding-top: 5rem;
-  padding-bottom: 8rem;
+  padding-bottom: 12rem;
 }
 @media (max-width: 1024px) {
   .invest__wrap {
