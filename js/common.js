@@ -371,12 +371,14 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
             if (scrollTimeout) clearTimeout(scrollTimeout);
 
-
-            if ((e.deltaY > 0 && isBottom && canGoNext()) || 
-                (e.deltaY < 0 && isTop && canGoPrev())) {
+            // Переход только если мы достигли края страницы
+            if (e.deltaY > 0 && isBottom && canGoNext()) {
                 scrollTimeout = setTimeout(() => {
-                    e.deltaY > 0 ? navigateToPage(currentPageIndex + 1) : 
-                                navigateToPage(currentPageIndex - 1);
+                    navigateToPage(currentPageIndex + 1);
+                }, scrollerTime * 0.75);
+            } else if (e.deltaY < 0 && isTop && canGoPrev()) {
+                scrollTimeout = setTimeout(() => {
+                    navigateToPage(currentPageIndex - 1);
                 }, scrollerTime * 0.75);
             }
         }
@@ -388,8 +390,6 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
         function handleTouchMove(e) {
             if (!canChangeScrollIfSlide) return;
-
-            
             if (isTransitioning || isMenuOpened || is404Page) return;
             
             const touchY = e.touches[0].clientY;
@@ -398,21 +398,18 @@ document.addEventListener("DOMContentLoaded",(event) => {
             
             if (scrollTimeout) clearTimeout(scrollTimeout);
 
-            console.log("checkScrollEdges()",checkScrollEdges())
-            console.log("if(deltaY < -20 && isBottom && canGoNext() && !isSliderCanVertical.down):",deltaY < -20 && isBottom && canGoNext() && !isSliderCanVertical.down);
-            console.log("if(deltaY > 20 && isTop && canGoPrev() && !isSliderCanVertical.up):",deltaY > 20 && isTop && canGoPrev() && !isSliderCanVertical.up);
-    
-
-            if(deltaY > 0 && isBottom && canGoNext() && !isSliderCanVertical.down) return;
-
-            if(deltaY < 0 && isTop && canGoPrev() && !isSliderCanVertical.up) return;
+            // Блокировка, если слайдер может прокручиваться вертикально
+            if (deltaY > 0 && isBottom && canGoNext() && !isSliderCanVertical.down) return;
+            if (deltaY < 0 && isTop && canGoPrev() && !isSliderCanVertical.up) return;
             
-
-            if ((deltaY > 0 && isBottom && canGoNext()) || 
-                (deltaY < 0 && isTop && canGoPrev())) {
+            // Переход только если мы достигли края страницы
+            if (deltaY < 0 && isBottom && canGoNext()) {
                 scrollTimeout = setTimeout(() => {
-                    deltaY < 0 ? navigateToPage(currentPageIndex + 1) : 
-                                navigateToPage(currentPageIndex - 1);
+                    navigateToPage(currentPageIndex + 1);
+                }, scrollerTime * 1.25);
+            } else if (deltaY > 0 && isTop && canGoPrev()) {
+                scrollTimeout = setTimeout(() => {
+                    navigateToPage(currentPageIndex - 1);
                 }, scrollerTime * 1.25);
             }
         }
