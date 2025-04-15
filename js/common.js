@@ -398,20 +398,28 @@ document.addEventListener("DOMContentLoaded",(event) => {
             const { isTop, isBottom } = checkScrollEdges();
             
             if (scrollTimeout) clearTimeout(scrollTimeout);
-
-            // Блокировка если слайдер может скроллиться вертикально
-            if ((deltaY > 0 && !isSliderCanVertical.up) || 
-                (deltaY < 0 && !isSliderCanVertical.down)) {
+        
+            // Определяем направление жеста
+            const isScrollingUp = deltaY > 0; // Палец движется вниз (контент вверх)
+            const isScrollingDown = deltaY < 0; // Палец движется вверх (контент вниз)
+        
+            // Блокировка стандартного скролла если:
+            // 1. Пытаемся скроллить вверх, но слайдер не может скроллиться вверх
+            // 2. Пытаемся скроллить вниз, но слайдер не может скроллиться вниз
+            if ((isScrollingUp && !isSliderCanVertical.up) || 
+                (isScrollingDown && !isSliderCanVertical.down)) {
                 e.preventDefault();
             }
-
-            // Только если на краю И пытаемся скроллить за пределы
-            if ((deltaY < 0 && isBottom && canGoNext()) || 
-                (deltaY > 0 && isTop && canGoPrev())) {
+        
+            // Переход между страницами только если:
+            // 1. На нижней границе и пытаемся скроллить вниз (и можно идти дальше)
+            // 2. На верхней границе и пытаемся скроллить вверх (и можно идти назад)
+            if ((isScrollingDown && isBottom && canGoNext()) || 
+                (isScrollingUp && isTop && canGoPrev())) {
                 e.preventDefault();
                 scrollTimeout = setTimeout(() => {
-                    deltaY < 0 ? navigateToPage(currentPageIndex + 1) : 
-                                navigateToPage(currentPageIndex - 1);
+                    isScrollingDown ? navigateToPage(currentPageIndex + 1) : 
+                                     navigateToPage(currentPageIndex - 1);
                 }, scrollerTime * 1.25);
             }
         }
