@@ -79,8 +79,6 @@ document.addEventListener("DOMContentLoaded",(event) => {
         let isTransitioning = false;
         let scrollTimeout = null;
         let touchStartY = 0;
-        let touchStartTime = 0;
-        const MIN_SWIPE_DISTANCE = 50; // Минимальная дистанция для срабатывания
         let scrollerTime = 300;
         // Инициализация
         initCurrentPage();
@@ -361,11 +359,11 @@ document.addEventListener("DOMContentLoaded",(event) => {
             initLinkHandlers();
 
             // Десктоп
-            window.addEventListener('wheel', handleDesktopScroll(event));
+            window.addEventListener('wheel', handleDesktopScroll);
             
             // Мобильные устройства
-            window.addEventListener('touchstart', handleTouchStart(event));
-            window.addEventListener('touchmove', handleTouchMove(event));
+            window.addEventListener('touchstart', handleTouchStart);
+            window.addEventListener('touchmove', handleTouchMove);
             
             // История браузера
             window.addEventListener('popstate', handlePopState);
@@ -376,15 +374,13 @@ document.addEventListener("DOMContentLoaded",(event) => {
             if (isTransitioning || isMenuOpened || is404Page) return;
 
             const { isTop, isBottom } = checkScrollEdges();
-            
+            console.log(`Scroll: deltaY=${e.deltaY}, top=${isTop}, bottom=${isBottom}`);
+
             if (scrollTimeout) clearTimeout(scrollTimeout);
 
-            // Только если мы на краю И пытаемся скроллить за пределы
-            const shouldNavigate = (e.deltaY > 0 && isBottom && canGoNext()) || 
-                                (e.deltaY < 0 && isTop && canGoPrev());
 
-            if (shouldNavigate) {
-                e.preventDefault();
+            if ((e.deltaY > 0 && isBottom && canGoNext()) || 
+                (e.deltaY < 0 && isTop && canGoPrev())) {
                 scrollTimeout = setTimeout(() => {
                     e.deltaY > 0 ? navigateToPage(currentPageIndex + 1) : 
                                 navigateToPage(currentPageIndex - 1);
@@ -392,40 +388,40 @@ document.addEventListener("DOMContentLoaded",(event) => {
             }
         }
 
+        // Обработка тач-событий
         function handleTouchStart(e) {
-            if (!e.touches || e.touches.length === 0) return;
             touchStartY = e.touches[0].clientY;
         }
 
         function handleTouchMove(e) {
-            if (!e.touches || e.touches.length === 0 || 
-                !canChangeScrollIfSlide || isTransitioning || 
-                isMenuOpened || is404Page) return;
+            if (!canChangeScrollIfSlide) return;
 
+            
+            if (isTransitioning || isMenuOpened || is404Page) return;
+            
             const touchY = e.touches[0].clientY;
             const deltaY = touchY - touchStartY;
             const { isTop, isBottom } = checkScrollEdges();
             
             if (scrollTimeout) clearTimeout(scrollTimeout);
 
-            // Определяем, достаточно ли сильный свайп
-            const isStrongSwipe = Math.abs(deltaY) > MIN_SWIPE_DISTANCE;
-            
-            // Переход между страницами только при сильном свайпе на границах
-            const shouldNavigate = (deltaY < -MIN_SWIPE_DISTANCE && isBottom && canGoNext()) || 
-                                (deltaY > MIN_SWIPE_DISTANCE && isTop && canGoPrev());
+            console.log("checkScrollEdges()",checkScrollEdges())
+            console.log("if(deltaY < -20 && isBottom && canGoNext() && !isSliderCanVertical.down):",deltaY < -20 && isBottom && canGoNext() && !isSliderCanVertical.down);
+            console.log("if(deltaY > 20 && isTop && canGoPrev() && !isSliderCanVertical.up):",deltaY > 20 && isTop && canGoPrev() && !isSliderCanVertical.up);
+    
 
-            if (shouldNavigate) {
-                e.preventDefault();
+            if(deltaY < -20 && isBottom && canGoNext() && !isSliderCanVertical.down) return;
+
+            if(deltaY > 20 && isTop && canGoPrev() && !isSliderCanVertical.up) return;
+            
+
+
+            if ((deltaY < -20 && isBottom && canGoNext()) || 
+                (deltaY > 20 && isTop && canGoPrev())) {
                 scrollTimeout = setTimeout(() => {
                     deltaY < 0 ? navigateToPage(currentPageIndex + 1) : 
-                            navigateToPage(currentPageIndex - 1);
+                                navigateToPage(currentPageIndex - 1);
                 }, scrollerTime * 1.25);
-            }
-            
-            // Разрешаем обычный скролл, если не на границе или слабый свайп
-            if (!isTop && !isBottom) {
-                return; // Разрешаем нативный скролл
             }
         }
 
