@@ -161,17 +161,24 @@ document.addEventListener("DOMContentLoaded",(event) => {
             const documentHeight = document.documentElement.scrollHeight;
             const windowHeight = window.innerHeight;
             const maxScroll = Math.max(documentHeight - windowHeight, 0);
-
-            console.log("documentHeight:",documentHeight);
-            console.log("windowHeight:",windowHeight);
-
-            console.log("scrollY:",scrollY);
-            console.log("maxScroll:",maxScroll);
-
-
+            
+            // Точность определения края (в пикселях)
+            const edgeThreshold = 5;
+            
+            // Если контент меньше высоты окна - считаем что мы и сверху и снизу одновременно
+            const isContentShort = documentHeight <= windowHeight;
+            
             return {
-                isTop: scrollY <= 10,
-                isBottom: scrollY >= maxScroll - 10 || documentHeight <= windowHeight || isSliderCanVertical.down
+                isTop: scrollY <= edgeThreshold || isContentShort,
+                isBottom: scrollY >= maxScroll - edgeThreshold || isContentShort,
+                // Дополнительная информация для отладки
+                _debug: {
+                    scrollY,
+                    maxScroll,
+                    documentHeight,
+                    windowHeight,
+                    isContentShort
+                }
             };
         }
 
