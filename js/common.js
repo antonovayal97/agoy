@@ -426,6 +426,9 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
         // Обработка тач-событий
         function handleTouchStart(e) {
+            // Проверяем наличие touches и что это массив с элементами
+            if (!e.touches || e.touches.length === 0) return;
+            
             touchStartY = e.touches[0].clientY;
         }
 
