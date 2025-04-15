@@ -79,6 +79,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
         let isTransitioning = false;
         let scrollTimeout = null;
         let touchStartY = 0;
+        let touchStartTime = 0;
+        const MIN_SWIPE_DISTANCE = 50; // Минимальная дистанция для срабатывания
         let scrollerTime = 300;
         // Инициализация
         initCurrentPage();
@@ -389,49 +391,57 @@ document.addEventListener("DOMContentLoaded",(event) => {
             }
         }
 
-        // Обработка тач-событий
-        function handleTouchMove(e) {
-            if (!canChangeScrollIfSlide || isTransitioning || isMenuOpened || is404Page) return;
-            
-            const touchY = e.touches[0].clientY;
-            const deltaY = touchY - touchStartY;
-            const { isTop, isBottom } = checkScrollEdges();
-            
-            if (scrollTimeout) clearTimeout(scrollTimeout);
-        
-            // Определяем направление жеста
-            const isScrollingUp = deltaY > 0; // Палец движется вниз (контент вверх)
-            const isScrollingDown = deltaY < 0; // Палец движется вверх (контент вниз)
-        
-            // Блокировка стандартного скролла если:
-            // 1. Пытаемся скроллить вверх, но слайдер не может скроллиться вверх
-            // 2. Пытаемся скроллить вниз, но слайдер не может скроллиться вниз
-            if ((isScrollingUp && !isSliderCanVertical.up) || 
-                (isScrollingDown && !isSliderCanVertical.down)) {
-                e.preventDefault();
-            }
-        
-            // Переход между страницами только если:
-            // 1. На нижней границе и пытаемся скроллить вниз (и можно идти дальше)
-            // 2. На верхней границе и пытаемся скроллить вверх (и можно идти назад)
-            if ((isScrollingDown && isBottom && canGoNext()) || 
-                (isScrollingUp && isTop && canGoPrev())) {
-                e.preventDefault();
-                scrollTimeout = setTimeout(() => {
-                    isScrollingDown ? navigateToPage(currentPageIndex + 1) : 
-                                     navigateToPage(currentPageIndex - 1);
-                }, scrollerTime * 1.25);
-            }
-        }
-
-        // Обработка тач-событий
         function handleTouchStart(e) {
-            // Проверяем наличие touches и что это массив с элементами
-            if (!e.touches || e.touches.length === 0) return;
-            
-            touchStartY = e.touches[0].clientY;
+            try {
+                // Проверяем наличие события и массива touches
+                if (!e || !e.touches || e.touches.length === 0) return;
+                
+                touchStartY = e.touches[0].clientY;
+                touchStartTime = Date.now();
+            } catch (error) {
+                console.error('Error in handleTouchStart:', error);
+            }
         }
-
+        
+        function handleTouchMove(e) {
+            try {
+                // Проверяем все возможные условия для выхода
+                if (!e || !e.touches || e.touches.length === 0 || 
+                    !canChangeScrollIfSlide || isTransitioning || 
+                    isMenuOpened || is404Page) {
+                    return;
+                }
+        
+                const touchY = e.touches[0].clientY;
+                const deltaY = touchY - touchStartY;
+                const { isTop, isBottom } = checkScrollEdges();
+                
+                // Очищаем предыдущий таймаут
+                if (scrollTimeout) clearTimeout(scrollTimeout);
+        
+                // Определяем направление и силу жеста
+                const isScrollingUp = deltaY > MIN_SWIPE_DISTANCE;
+                const isScrollingDown = deltaY < -MIN_SWIPE_DISTANCE;
+                const isIntentionalSwipe = Math.abs(deltaY) > MIN_SWIPE_DISTANCE;
+        
+                // Блокируем стандартное поведение только для intentional swipes
+                if (isIntentionalSwipe) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+        
+                // Переход между страницами только при intentional swipe на границах
+                if ((isScrollingDown && isBottom && canGoNext()) || 
+                    (isScrollingUp && isTop && canGoPrev())) {
+                    scrollTimeout = setTimeout(() => {
+                        isScrollingDown ? navigateToPage(currentPageIndex + 1) : 
+                                        navigateToPage(currentPageIndex - 1);
+                    }, scrollerTime * 1.25);
+                }
+            } catch (error) {
+                console.error('Error in handleTouchMove:', error);
+            }
+        }
 
         // Обработка истории
         function handlePopState(e) {
