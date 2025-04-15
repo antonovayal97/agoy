@@ -359,11 +359,11 @@ document.addEventListener("DOMContentLoaded",(event) => {
             initLinkHandlers();
 
             // Десктоп
-            window.addEventListener('wheel', handleDesktopScroll);
+            window.addEventListener('wheel', handleDesktopScroll(event));
             
             // Мобильные устройства
-            window.addEventListener('touchstart', handleTouchStart());
-            window.addEventListener('touchmove', handleTouchMove());
+            window.addEventListener('touchstart', handleTouchStart(event));
+            window.addEventListener('touchmove', handleTouchMove(event));
             
             // История браузера
             window.addEventListener('popstate', handlePopState);
