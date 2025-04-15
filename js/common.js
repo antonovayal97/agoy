@@ -362,8 +362,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
             window.addEventListener('wheel', handleDesktopScroll);
             
             // Мобильные устройства
-            window.addEventListener('touchstart', handleTouchStart(e));
-            window.addEventListener('touchmove', handleTouchMove(e));
+            window.addEventListener('touchstart', handleTouchStart());
+            window.addEventListener('touchmove', handleTouchMove());
             
             // История браузера
             window.addEventListener('popstate', handlePopState);
