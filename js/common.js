@@ -376,14 +376,15 @@ document.addEventListener("DOMContentLoaded",(event) => {
             if (isTransitioning || isMenuOpened || is404Page) return;
 
             const { isTop, isBottom } = checkScrollEdges();
-            console.log(`Scroll: deltaY=${e.deltaY}, top=${isTop}, bottom=${isBottom}`);
-
+            
             if (scrollTimeout) clearTimeout(scrollTimeout);
 
             // Только если мы на краю И пытаемся скроллить за пределы
-            if ((e.deltaY > 0 && isBottom && canGoNext()) || 
-                (e.deltaY < 0 && isTop && canGoPrev())) {
-                e.preventDefault(); // Предотвращаем стандартный скролл
+            const shouldNavigate = (e.deltaY > 0 && isBottom && canGoNext()) || 
+                                (e.deltaY < 0 && isTop && canGoPrev());
+
+            if (shouldNavigate) {
+                e.preventDefault();
                 scrollTimeout = setTimeout(() => {
                     e.deltaY > 0 ? navigateToPage(currentPageIndex + 1) : 
                                 navigateToPage(currentPageIndex - 1);
@@ -392,54 +393,39 @@ document.addEventListener("DOMContentLoaded",(event) => {
         }
 
         function handleTouchStart(e) {
-            try {
-                // Проверяем наличие события и массива touches
-                if (!e || !e.touches || e.touches.length === 0) return;
-                
-                touchStartY = e.touches[0].clientY;
-                touchStartTime = Date.now();
-            } catch (error) {
-                console.error('Error in handleTouchStart:', error);
-            }
+            if (!e.touches || e.touches.length === 0) return;
+            touchStartY = e.touches[0].clientY;
         }
-        
+
         function handleTouchMove(e) {
-            try {
-                // Проверяем все возможные условия для выхода
-                if (!e || !e.touches || e.touches.length === 0 || 
-                    !canChangeScrollIfSlide || isTransitioning || 
-                    isMenuOpened || is404Page) {
-                    return;
-                }
-        
-                const touchY = e.touches[0].clientY;
-                const deltaY = touchY - touchStartY;
-                const { isTop, isBottom } = checkScrollEdges();
-                
-                // Очищаем предыдущий таймаут
-                if (scrollTimeout) clearTimeout(scrollTimeout);
-        
-                // Определяем направление и силу жеста
-                const isScrollingUp = deltaY > MIN_SWIPE_DISTANCE;
-                const isScrollingDown = deltaY < -MIN_SWIPE_DISTANCE;
-                const isIntentionalSwipe = Math.abs(deltaY) > MIN_SWIPE_DISTANCE;
-        
-                // Блокируем стандартное поведение только для intentional swipes
-                if (isIntentionalSwipe) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-        
-                // Переход между страницами только при intentional swipe на границах
-                if ((isScrollingDown && isBottom && canGoNext()) || 
-                    (isScrollingUp && isTop && canGoPrev())) {
-                    scrollTimeout = setTimeout(() => {
-                        isScrollingDown ? navigateToPage(currentPageIndex + 1) : 
-                                        navigateToPage(currentPageIndex - 1);
-                    }, scrollerTime * 1.25);
-                }
-            } catch (error) {
-                console.error('Error in handleTouchMove:', error);
+            if (!e.touches || e.touches.length === 0 || 
+                !canChangeScrollIfSlide || isTransitioning || 
+                isMenuOpened || is404Page) return;
+
+            const touchY = e.touches[0].clientY;
+            const deltaY = touchY - touchStartY;
+            const { isTop, isBottom } = checkScrollEdges();
+            
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+
+            // Определяем, достаточно ли сильный свайп
+            const isStrongSwipe = Math.abs(deltaY) > MIN_SWIPE_DISTANCE;
+            
+            // Переход между страницами только при сильном свайпе на границах
+            const shouldNavigate = (deltaY < -MIN_SWIPE_DISTANCE && isBottom && canGoNext()) || 
+                                (deltaY > MIN_SWIPE_DISTANCE && isTop && canGoPrev());
+
+            if (shouldNavigate) {
+                e.preventDefault();
+                scrollTimeout = setTimeout(() => {
+                    deltaY < 0 ? navigateToPage(currentPageIndex + 1) : 
+                            navigateToPage(currentPageIndex - 1);
+                }, scrollerTime * 1.25);
+            }
+            
+            // Разрешаем обычный скролл, если не на границе или слабый свайп
+            if (!isTop && !isBottom) {
+                return; // Разрешаем нативный скролл
             }
         }
 
