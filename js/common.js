@@ -384,7 +384,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 scrollTimeout = setTimeout(() => {
                     e.deltaY > 0 ? navigateToPage(currentPageIndex + 1) : 
                                 navigateToPage(currentPageIndex - 1);
-                }, scrollerTime * 0.75);
+                }, scrollerTime * 1.25);
             }
         }
 
@@ -422,7 +422,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 scrollTimeout = setTimeout(() => {
                     deltaY < 0 ? navigateToPage(currentPageIndex + 1) : 
                                 navigateToPage(currentPageIndex - 1);
-                }, scrollerTime * 1.25);
+                }, scrollerTime * 0.75);
             }
         }
 
