@@ -407,26 +407,16 @@ document.addEventListener("DOMContentLoaded",(event) => {
             if (scrollTimeout) clearTimeout(scrollTimeout);
 
             console.log("checkScrollEdges()",checkScrollEdges())
-            console.log("if(deltaY < -30 && isBottom && canGoNext() && !isSliderCanVertical.down):",deltaY < -30 && isBottom && canGoNext() && !isSliderCanVertical.down);
-            console.log("if(deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up):",deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up);
+            console.log("if(deltaY < -20 && isBottom && canGoNext() && !isSliderCanVertical.down):",deltaY < -20 && isBottom && canGoNext() && !isSliderCanVertical.down);
+            console.log("if(deltaY > 20 && isTop && canGoPrev() && !isSliderCanVertical.up):",deltaY > 20 && isTop && canGoPrev() && !isSliderCanVertical.up);
     
 
-            //if(deltaY < -30 && isBottom && canGoNext() && !isSliderCanVertical.down) return;
-
-            //alert("deltaY < -30 && isBottom && canGoNext() && !isSliderCanVertical.down", deltaY < -30 && isBottom && canGoNext() && !isSliderCanVertical.down);
-
-            //if(deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up) return;
-            
-            //alert("deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up", deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up);
-
-            console.log("deltaY", deltaY)
-
-            if ((deltaY < -30 && isBottom && canGoNext() && isSliderCanVertical.down) || 
-                (deltaY > 30 && isTop && canGoPrev() && isSliderCanVertical.up)) {
+            if ((deltaY < -20 && isBottom && canGoNext() && isSliderCanVertical.down) || 
+                (deltaY > 20 && isTop && canGoPrev() && isSliderCanVertical.up)) {
                 scrollTimeout = setTimeout(() => {
-                    deltaY < -30 ? navigateToPage(currentPageIndex + 1) : 
+                    deltaY < -20 ? navigateToPage(currentPageIndex + 1) : 
                                 navigateToPage(currentPageIndex - 1);
-                }, scrollerTime * 0.75);
+                }, scrollerTime * 1.25);
             }
         }
 
