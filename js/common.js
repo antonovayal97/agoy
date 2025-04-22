@@ -419,6 +419,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
             
             //alert("deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up", deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up);
 
+            console.log("deltaY", deltaY)
+            
             if ((deltaY < -30 && isBottom && canGoNext() && isSliderCanVertical.down) || 
                 (deltaY > 30 && isTop && canGoPrev() && isSliderCanVertical.up)) {
                 scrollTimeout = setTimeout(() => {
