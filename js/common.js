@@ -422,7 +422,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
             if ((deltaY < -30 && isBottom && canGoNext()) || 
                 (deltaY > 30 && isTop && canGoPrev())) {
                 scrollTimeout = setTimeout(() => {
-                    deltaY < 0 ? navigateToPage(currentPageIndex + 1) : 
+                    deltaY < -30 ? navigateToPage(currentPageIndex + 1) : 
                                 navigateToPage(currentPageIndex - 1);
                 }, scrollerTime * 0.75);
             }
