@@ -413,9 +413,11 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
             if(deltaY < -30 && isBottom && canGoNext() && !isSliderCanVertical.down) return;
 
+            alert("deltaY < -30 && isBottom && canGoNext() && !isSliderCanVertical.down", deltaY < -30 && isBottom && canGoNext() && !isSliderCanVertical.down);
+
             if(deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up) return;
             
-
+            alert("deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up", deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up);
 
             if ((deltaY < -30 && isBottom && canGoNext()) || 
                 (deltaY > 30 && isTop && canGoPrev())) {
