@@ -1630,11 +1630,6 @@ footer .footer__item--social-icon {
 .big-slider {
   height: 100vh;
 }
-@media (max-width: 1024px) {
-  .big-slider {
-    height: calc(100vh + 5px);
-  }
-}
 .big-slider__item {
   position: relative;
   height: 100vh;
