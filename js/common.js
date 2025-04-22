@@ -409,18 +409,18 @@ document.addEventListener("DOMContentLoaded",(event) => {
             if (scrollTimeout) clearTimeout(scrollTimeout);
 
             console.log("checkScrollEdges()",checkScrollEdges())
-            console.log("if(deltaY < -10 && isBottom && canGoNext() && !isSliderCanVertical.down):",deltaY < -10 && isBottom && canGoNext() && !isSliderCanVertical.down);
-            console.log("if(deltaY > 10 && isTop && canGoPrev() && !isSliderCanVertical.up):",deltaY > 10 && isTop && canGoPrev() && !isSliderCanVertical.up);
+            console.log("if(deltaY < -30 && isBottom && canGoNext() && !isSliderCanVertical.down):",deltaY < -30 && isBottom && canGoNext() && !isSliderCanVertical.down);
+            console.log("if(deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up):",deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up);
     
 
-            if(deltaY < -10 && isBottom && canGoNext() && !isSliderCanVertical.down) return;
+            if(deltaY < -30 && isBottom && canGoNext() && !isSliderCanVertical.down) return;
 
-            if(deltaY > 10 && isTop && canGoPrev() && !isSliderCanVertical.up) return;
+            if(deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up) return;
             
 
 
-            if ((deltaY < -10 && isBottom && canGoNext()) || 
-                (deltaY > 10 && isTop && canGoPrev())) {
+            if ((deltaY < -30 && isBottom && canGoNext()) || 
+                (deltaY > 30 && isTop && canGoPrev())) {
                 scrollTimeout = setTimeout(() => {
                     deltaY < 0 ? navigateToPage(currentPageIndex + 1) : 
                                 navigateToPage(currentPageIndex - 1);
