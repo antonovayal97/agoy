@@ -411,16 +411,16 @@ document.addEventListener("DOMContentLoaded",(event) => {
             console.log("if(deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up):",deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up);
     
 
-            if(deltaY < -30 && isBottom && canGoNext() && !isSliderCanVertical.down) return;
+            //if(deltaY < -30 && isBottom && canGoNext() && !isSliderCanVertical.down) return;
 
             //alert("deltaY < -30 && isBottom && canGoNext() && !isSliderCanVertical.down", deltaY < -30 && isBottom && canGoNext() && !isSliderCanVertical.down);
 
-            if(deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up) return;
+            //if(deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up) return;
             
             //alert("deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up", deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up);
 
-            if ((deltaY < -30 && isBottom && canGoNext()) || 
-                (deltaY > 30 && isTop && canGoPrev())) {
+            if ((deltaY < -30 && isBottom && canGoNext() && isSliderCanVertical.down) || 
+                (deltaY > 30 && isTop && canGoPrev() && isSliderCanVertical.up)) {
                 scrollTimeout = setTimeout(() => {
                     deltaY < -30 ? navigateToPage(currentPageIndex + 1) : 
                                 navigateToPage(currentPageIndex - 1);
