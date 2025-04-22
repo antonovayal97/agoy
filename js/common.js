@@ -650,11 +650,29 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
                         canChangeScrollIfSlide = true;
 
-                        _header.style.backgroundColor = "#ddd";
+                        //_header.style.backgroundColor = "#ddd";
 
-                        setTimeout(() => {
-                            _header.style.backgroundColor = null;
-                        }, 500)
+                        //setTimeout(() => {
+                        //    _header.style.backgroundColor = null;
+                        //}, 500)
+
+                        if(isSliderCanVertical.up) 
+                        {
+                            _header.style.backgroundColor = "#ddd";
+
+                            setTimeout(() => {
+                                _header.style.backgroundColor = null;
+                            }, 500)
+                        }
+
+                        if(isSliderCanVertical.down) 
+                        {
+                            _header.style.backgroundColor = "#fbffdc";
+
+                            setTimeout(() => {
+                                _header.style.backgroundColor = null;
+                            }, 500)
+                        }
                       },
                 }
             });
