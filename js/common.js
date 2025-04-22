@@ -420,7 +420,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
             //alert("deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up", deltaY > 30 && isTop && canGoPrev() && !isSliderCanVertical.up);
 
             console.log("deltaY", deltaY)
-            
+
             if ((deltaY < -30 && isBottom && canGoNext() && isSliderCanVertical.down) || 
                 (deltaY > 30 && isTop && canGoPrev() && isSliderCanVertical.up)) {
                 scrollTimeout = setTimeout(() => {
@@ -602,6 +602,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
         if(bigSlider != undefined)
         {
             let bigSliderSwiper = new Swiper('.big-slider', {
+                resistance: false,        // Отключает "оттягивание" слайда
+                touchReleaseOnEdges: true,
                 slidesPerView: 1,
                 spaceBetween: 0,
                 grabCursor: true,
