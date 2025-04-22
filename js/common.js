@@ -622,6 +622,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
                 },
                 on: {
                     slideChange: function () {
+                        var _header = document.querySelector(".header")
+
                         const totalSlides = bigSliderSwiper.slides.length;
                         const isEnd = bigSliderSwiper.activeIndex === totalSlides - 1;
 
@@ -647,6 +649,12 @@ document.addEventListener("DOMContentLoaded",(event) => {
                         console.log("isSliderCanVertical.up swiper: ",isSliderCanVertical.up);
 
                         canChangeScrollIfSlide = true;
+
+                        _header.style.backgroundColor = "#ddd";
+
+                        setTimeout(() => {
+                            _header.style.backgroundColor = null;
+                        }, 500)
                       },
                 }
             });
