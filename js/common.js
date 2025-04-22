@@ -359,14 +359,14 @@ document.addEventListener("DOMContentLoaded",(event) => {
             initLinkHandlers();
 
             // Десктоп
-            window.addEventListener('wheel', handleDesktopScroll);
+            window.addEventListener('wheel', handleDesktopScroll, { passive: false });
             
             // Мобильные устройства
-            window.addEventListener('touchstart', handleTouchStart);
-            window.addEventListener('touchmove', handleTouchMove);
+            window.addEventListener('touchstart', handleTouchStart, { passive: false });
+            window.addEventListener('touchmove', handleTouchMove, { passive: false });
             
             // История браузера
-            window.addEventListener('popstate', handlePopState);
+            window.addEventListener('popstate', handlePopState, { passive: false });
         }
 
         // Обработка скролла мышью
@@ -394,6 +394,9 @@ document.addEventListener("DOMContentLoaded",(event) => {
         }
 
         function handleTouchMove(e) {
+
+            e.preventDefault();
+
             if (!canChangeScrollIfSlide) return;
 
             
