@@ -2150,7 +2150,12 @@ footer .footer__item--social-icon {
 
 .static__wrap {
   padding-top: 5rem;
-  padding-bottom: 2rem;
+  padding-bottom: 12rem;
+}
+@media (max-width: 1024px) {
+  .static__wrap {
+    padding-bottom: 8rem;
+  }
 }
 .static__content {
   margin-top: 2rem;
