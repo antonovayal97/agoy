@@ -2183,6 +2183,18 @@ footer .footer__item--social-icon {
   font-size: 1.25rem;
   line-height: 1.5rem;
 }
+.static__privacy li {
+  margin-bottom: 0.5rem;
+}
+.static__privacy li:last-child {
+  margin-bottom: 0;
+}
+.static__privacy h2 {
+  margin: 1rem 0;
+}
+.static__privacy h2:first-child {
+  margin-top: 0;
+}
 .static__privacy ol {
   list-style: auto;
   margin-left: 1rem;
