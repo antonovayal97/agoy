@@ -2188,17 +2188,16 @@ footer .footer__item--social-icon {
   margin-left: 1rem;
 }
 .static__privacy h2 {
-  font-weight: 700;
-  font-size: 2rem;
-  line-height: 2.4rem;
-  letter-spacing: -0.06rem;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 2rem;
   text-transform: uppercase;
 }
 @media (max-width: 1024px) {
   .static__privacy h2 {
-    font-weight: 700;
-    font-size: 2rem;
-    line-height: 2.25rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 2rem;
     text-transform: uppercase;
   }
 }
