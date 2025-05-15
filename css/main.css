@@ -2178,7 +2178,7 @@ footer .footer__item--social-icon {
     text-transform: uppercase;
   }
 }
-.static__privacy p, .static__privacy li, .static__privacy a, .static__privacy b {
+.static__privacy p, .static__privacy li, .static__privacy a {
   font-weight: 400;
   font-size: 1.25rem;
   line-height: 1.5rem;
