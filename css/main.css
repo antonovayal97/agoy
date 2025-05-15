@@ -2163,7 +2163,7 @@ footer .footer__item--social-icon {
 .static__privacy .view__title {
   text-align: center;
 }
-.static__privacy .view__title h2 {
+.static__privacy .view__title h1 {
   font-weight: 700;
   font-size: 2.5rem;
   line-height: 2.75rem;
@@ -2171,7 +2171,7 @@ footer .footer__item--social-icon {
   text-transform: uppercase;
 }
 @media (max-width: 1024px) {
-  .static__privacy .view__title h2 {
+  .static__privacy .view__title h1 {
     font-weight: 700;
     font-size: 2rem;
     line-height: 2.25rem;
@@ -2186,6 +2186,21 @@ footer .footer__item--social-icon {
 .static__privacy ol {
   list-style: auto;
   margin-left: 1rem;
+}
+.static__privacy h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.4rem;
+  letter-spacing: -0.06rem;
+  text-transform: uppercase;
+}
+@media (max-width: 1024px) {
+  .static__privacy h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.25rem;
+    text-transform: uppercase;
+  }
 }
 
 .v3d__wrap {
