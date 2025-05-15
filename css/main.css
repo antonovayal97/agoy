@@ -2160,6 +2160,9 @@ footer .footer__item--social-icon {
 .static__content {
   margin-top: 2rem;
 }
+.static__content a {
+  color: var(--color-brand-beige);
+}
 .static__privacy .view__title {
   text-align: center;
 }
