@@ -487,6 +487,36 @@ document.addEventListener("DOMContentLoaded",(event) => {
             lastScrollTop = scrollTop;
         });
     }
+    function initShowMore()
+    {
+        let showMores = document.querySelectorAll(".show-more");
+        const showMoreHeight = 300;
+        showMores.forEach((item) => {
+            let btn = item.querySelector(".show-more__btn")
+            let content = document.querySelector(".show-more__content")
+            let itemHeight = content.offsetHeight
+
+            if(itemHeight > showMoreHeight)
+            {
+                content.style.height = 300 + "px"
+                content.style.overflow = "hidden"
+                btn.addEventListener("click", () => {
+                    content.style.height = itemHeight + "px";
+                    setTimeout(() => {
+                        content.style.height = "auto"
+                    },300)
+                    item.classList.add("show-more__active");
+                    btn.style.display = "none"
+                })
+            }
+            else
+            {
+                btn.style.display = "none"
+                item.classList.add("show-more__active")
+            }
+            console.log("itemHeight:",itemHeight)
+        })
+    }
     function initSlides()
     {
         let sposobOplaty = document.querySelector(".partners__cards");
@@ -7724,6 +7754,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
         initMask();
         initTableTabs();
         initIframeBtns();
+        initShowMore();
     }
 
     function onWindowResize()
