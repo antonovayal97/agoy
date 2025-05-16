@@ -395,6 +395,8 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
         function handleTouchMove(e) {
 
+            if (e.target.closest('table')) return;
+
             if (!canChangeScrollIfSlide) return;
 
             
