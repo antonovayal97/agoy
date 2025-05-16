@@ -292,6 +292,11 @@ document.addEventListener("DOMContentLoaded",(event) => {
                     top: 0,//newIndex > currentPageIndex ? 0 : document.body.scrollHeight,
                     //behavior: 'smooth'
                 });
+
+                if(window.innerWidth >= 768)
+                {
+                    initScroller();
+                }
                 console.log('Content updated');
             }, 500)
         }
@@ -7718,7 +7723,79 @@ document.addEventListener("DOMContentLoaded",(event) => {
         });
     }
 
-    function initIframeBtns() {
+    function initMobileScroller()
+    {
+        const scrollerMobile = document.querySelector(".mobile-scroller__hand");
+        const scrollerMobilewrapper = document.querySelector(".mobile-scroller");
+        let i = 0;
+        scrollerMobilewrapper.style.display = "block"
+        async function animate() {
+            while (i < 2) {
+                await delay(400);
+
+                scrollerMobile.style.opacity = 1;
+
+                await delay(800);
+                // 1. Сразу добавляем .scroller--up
+                scrollerMobile.style.opacity = 0;
+                scrollerMobile.classList.add("mobile-scroller__hand--move");
+                
+                // 2. Через 400мс добавляем .scroller--active
+                await delay(800);
+                scrollerMobile.classList.remove("mobile-scroller__hand--move");
+                i++;
+            }
+
+            if(i == 2)
+            {
+                setTimeout(() => {
+                    scrollerMobilewrapper.style.display = "none"
+                },200)
+                scrollerMobilewrapper.style.opacity = 0
+            }
+        }
+    
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    
+        animate(); // Запускаем
+    }
+    function initScroller() {
+        const scroller = document.querySelector(".scroller");
+
+        let i = 0;
+        async function animate() {
+            while (i < 1) {
+                await delay(800);
+                // 1. Сразу добавляем .scroller--up
+                scroller.classList.add("scroller--up");
+                
+                // 2. Через 400мс добавляем .scroller--active
+                await delay(800);
+                scroller.classList.add("scroller--active");
+                
+                // 4. Через 500мс убираем .scroller--active (всего 1300мс)
+                await delay(800);
+                scroller.classList.remove("scroller--active");
+
+                // 3. Ещё через 400мс убираем .scroller--up (всего 800мс)
+                await delay(800);
+                scroller.classList.remove("scroller--up");
+                // Цикл автоматически повторяется (1300мс на полный круг)
+                i++;
+            }
+        }
+    
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    
+        animate(); // Запускаем
+    }
+
+    function initIframeBtns()
+    {
         // Получаем все кнопки с data-iframe атрибутом
         var btns = document.querySelectorAll("[data-iframe]");
         var modalIframe = document.querySelector(".modal-iframe-iframe");
@@ -7757,6 +7834,11 @@ document.addEventListener("DOMContentLoaded",(event) => {
         initTableTabs();
         initIframeBtns();
         initShowMore();
+
+        if(window.innerWidth < 768)
+        {
+            initMobileScroller();
+        }
     }
 
     function onWindowResize()
