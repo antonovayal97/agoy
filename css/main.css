@@ -210,6 +210,14 @@ body {
   white-space: normal;
 }
 
+.line--3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  white-space: normal;
+}
+
 .line--4 {
   display: -webkit-box;
   -webkit-box-orient: vertical;
