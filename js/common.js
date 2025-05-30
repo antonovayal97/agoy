@@ -371,7 +371,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
             window.addEventListener('touchmove', handleTouchMove);
             
             // История браузера
-            window.addEventListener('popstate', handlePopState);
+            //window.addEventListener('popstate', handlePopState);
         }
 
         // Обработка скролла мышью
@@ -429,6 +429,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
         // Обработка истории
         function handlePopState(e) {
+            console.log("e: ", e)
             const newIndex = e.state?.index ?? 0;
             if (newIndex !== currentPageIndex) {
                 navigateToPage(newIndex);
