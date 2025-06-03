@@ -7821,7 +7821,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
     function initFancy()
     {
         Fancybox.bind("[data-fancybox]", {
-        // Your custom options
+            Thumbs: false,
         });
     }
 
