@@ -400,7 +400,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
 
         function handleTouchMove(e) {
 
-            if (e.target.closest('.swiper')) return;
+            if (e.target.closest('.news__swiper')) return;
             
             if (e.target.closest('table')) return;
 
