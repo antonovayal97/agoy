@@ -203,7 +203,8 @@ body {
     height: auto;
   }
 }
-.view__title h2 {
+.view__title h2,
+.view__title h1 {
   font-weight: 700;
   font-size: 4rem;
   line-height: 4rem;
@@ -211,7 +212,8 @@ body {
   letter-spacing: -0.12rem;
 }
 @media (max-width: 1024px) {
-  .view__title h2 {
+  .view__title h2,
+  .view__title h1 {
     font-weight: 700;
     font-size: 2rem;
     line-height: 2.25rem;
@@ -1087,7 +1089,8 @@ footer .footer__item--social-icon {
 .about-project__description-title {
   margin-bottom: 1.75rem;
 }
-.about-project__description-title h2 {
+.about-project__description-title h2,
+.about-project__description-title h1 {
   font-weight: 700;
   font-size: 2.5rem;
   line-height: 2.75rem;
@@ -1096,7 +1099,8 @@ footer .footer__item--social-icon {
   margin: -0.125rem 0;
 }
 @media (max-width: 1024px) {
-  .about-project__description-title h2 {
+  .about-project__description-title h2,
+  .about-project__description-title h1 {
     font-weight: 700;
     font-size: 2rem;
     line-height: 2.25rem;
@@ -2233,7 +2237,8 @@ footer .footer__item--social-icon {
   flex-direction: column;
   gap: 4rem;
 }
-.statiya__content-block h2 {
+.statiya__content-block h2,
+.statiya__content-block h1 {
   margin-bottom: 1.25rem;
 }
 .statiya__content-block p {
@@ -2257,7 +2262,8 @@ footer .footer__item--social-icon {
 .statiya__content-block__image-text__text {
   flex: 1;
 }
-.statiya__content-block__tabs h2 {
+.statiya__content-block__tabs h2,
+.statiya__content-block__tabs h1 {
   text-align: center;
   margin-bottom: 2.25rem;
 }
@@ -2363,24 +2369,28 @@ footer .footer__item--social-icon {
 .static__content li:last-child {
   margin-bottom: 0;
 }
-.static__content h2 {
+.static__content h2,
+.static__content h1 {
   margin: 1rem 0;
 }
-.static__content h2:first-child {
+.static__content h2:first-child,
+.static__content h1:first-child {
   margin-top: 0;
 }
 .static__content ol {
   list-style: auto;
   margin-left: 1.5rem;
 }
-.static__content h2 {
+.static__content h2,
+.static__content h1 {
   font-weight: 400;
   font-size: 1.5rem;
   line-height: 2rem;
   text-transform: uppercase;
 }
 @media (max-width: 1024px) {
-  .static__content h2 {
+  .static__content h2,
+  .static__content h1 {
     font-weight: 400;
     font-size: 1.5rem;
     line-height: 2rem;
