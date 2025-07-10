@@ -32,30 +32,35 @@
 
 @font-face {
   font-family: "Arsenal";
+  font-display: swap;
   src: url("../fonts/Arsenal/Arsenal-Regular.ttf");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "Arsenal";
+  font-display: swap;
   src: url("../fonts/Arsenal/Arsenal-Italic.ttf");
   font-weight: 400;
   font-style: italic;
 }
 @font-face {
   font-family: "Arsenal";
+  font-display: swap;
   src: url("../fonts/Arsenal/Arsenal-Bold.ttf");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: "Arsenal";
+  font-display: swap;
   src: url("../fonts/Arsenal/Arsenal-BoldItalic.ttf");
   font-weight: 700;
   font-style: italic;
 }
 @font-face {
   font-family: "", sans-serif;
+  font-display: swap;
   src: url("path/to/your/font.woff2") format("woff2");
   unicode-range: U+0021; /* Unicode для символа '!' */
 }
