@@ -1764,7 +1764,8 @@ footer .footer__item--social-icon {
     margin-bottom: 1.25rem;
   }
 }
-.big-slider__item-title {
+.big-slider__item-title h1,
+.big-slider__item-title h2 {
   font-weight: 700;
   font-size: 6rem;
   line-height: 6rem;
@@ -1772,7 +1773,8 @@ footer .footer__item--social-icon {
   letter-spacing: -0.18rem;
 }
 @media (max-width: 1024px) {
-  .big-slider__item-title {
+  .big-slider__item-title h1,
+  .big-slider__item-title h2 {
     font-weight: 700;
     font-size: 4rem;
     line-height: 4rem;
