@@ -2738,6 +2738,7 @@ footer .footer__item--social-icon {
   height: 100vh;
 }
 .bbf {
+  cursor: pointer;
   z-index: 2;
   position: absolute;
   display: flex;
