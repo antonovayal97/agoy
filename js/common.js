@@ -7794,9 +7794,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let bbfs = document.querySelectorAll(".banner");
 
     bbfs.forEach((bbf) => {
+      let link = bbf.querySelector("a");
       let button = bbf.querySelector(".bbf");
       let bbfModal = bbf.querySelector(".bbf-modal");
       let overlay = bbf.querySelector(".bbf-overlay");
+
+      link.addEventListener("click", () => {
+        bbfModal.classList.remove("bbf-modal-active");
+        if (bbfModal.classList.contains("bbf-modal-active")) {
+          body.style.overflow = "hidden";
+        } else {
+          body.style.overflow = "auto";
+        }
+      });
 
       overlay.addEventListener("click", () => {
         bbfModal.classList.remove("bbf-modal-active");
