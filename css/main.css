@@ -2885,3 +2885,173 @@ footer .footer__item--social-icon {
     transition: bottom 1s ease;
   }
 }
+
+.video-reportazh {
+  padding-top: 9rem;
+}
+@media (max-width: 1024px) {
+  .video-reportazh {
+    padding-top: 8rem;
+  }
+}
+.video-reportazh h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.625rem;
+  letter-spacing: -0.03rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+@media (max-width: 1024px) {
+  .video-reportazh h1 {
+    font-size: 2rem;
+    line-height: 1.3125rem;
+    margin-bottom: 3rem;
+  }
+}
+.video-reportazh__block {
+}
+.video-reportazh__block h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.3125rem;
+  letter-spacing: -0.03rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .video-reportazh__block h2 {
+    font-size: 1.75rem;
+    line-height: 1.125rem;
+  }
+}
+
+.video-reportazh__block b {
+  color: var(--color-brand-beige);
+}
+.video-reportazh__cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 1.25rem;
+  row-gap: 2rem;
+}
+@media (max-width: 1024px) {
+  .video-reportazh__cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 1.25rem;
+  }
+}
+
+.video-reportazh__blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.video-reportazh__card {
+}
+.video-reportazh__card-image {
+  position: relative;
+  height: 11rem;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+@media (max-width: 1024px) {
+  .video-reportazh__card-image {
+    height: 12.875rem;
+  }
+}
+
+.video-reportazh__card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.video-reportazh__card-name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* количество строк */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.375rem;
+  margin-top: 0.75rem;
+}
+.video-reportazh__card-image-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-accent-black);
+  opacity: 0.75;
+}
+.video-reportazh__card-image-button {
+  position: absolute;
+  background-color: transparent;
+  padding: 0;
+  width: 3rem;
+  height: 3rem;
+}
+.video-reportazh__card-image-button .icon {
+  width: 3rem;
+  height: 3rem;
+}
+.video-reportazh__button {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .video-reportazh__button {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+}
+.video-reportazh__button button {
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.625rem;
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-offset: 0%;
+  text-decoration-thickness: 0%;
+  text-decoration-skip-ink: auto;
+}
+.video-modal {
+  width: 50rem;
+  border-radius: 1rem;
+  height: auto;
+}
+
+@media (max-width: 1024px) {
+  .video-modal {
+    width: 23rem;
+    padding: 1.5rem;
+    height: auto;
+  }
+  .video-modal .hystmodal__close {
+    display: none;
+  }
+}
+
+.video-modal video {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.video-modal iframe {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

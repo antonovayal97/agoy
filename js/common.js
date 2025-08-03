@@ -770,6 +770,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
     //modals.open("#modal-form")
     //modals.open("#modal-form-success")
   }
+
+  function initModalsVideo() {
+    let modalVideo = document.querySelector("#modal-video iframe");
+    let buttons = document.querySelectorAll("[data-video-url]");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        modalVideo.src = button.dataset.videoUrl;
+      });
+    });
+  }
+
   // Сохраняем ссылки на обработчики
   let formSubmitHandlers = new WeakMap();
   let popupClickHandlers = new WeakMap();
@@ -7835,6 +7847,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     initSlides();
     mainMarginTop();
     initModals();
+    initModalsVideo();
     fixScroller();
     initAOS();
     initMap();
