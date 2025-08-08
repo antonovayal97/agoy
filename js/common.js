@@ -772,16 +772,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
   }
 
   function initModalsVideo() {
-    let modalVideo = document.querySelector("#modal-video iframe");
-    let buttons = document.querySelectorAll("[data-video-url]");
+    const modalVideo = document.querySelector("#modal-video iframe");
+    const buttons = document.querySelectorAll("[data-video-id]");
 
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
-        modalVideo.src = button.dataset.videoUrl;
+        const videoId = button.dataset.videoId;
+        modalVideo.src = `https://rutube.ru/play/embed/${videoId}`;
       });
     });
-  }
 
+    // Очищаем src при закрытии, чтобы видео останавливалось
+    document
+      .querySelector("#modal-video .hystmodal__close")
+      .addEventListener("click", () => {
+        modalVideo.src = "";
+      });
+  }
   // Сохраняем ссылки на обработчики
   let formSubmitHandlers = new WeakMap();
   let popupClickHandlers = new WeakMap();
