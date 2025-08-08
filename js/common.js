@@ -764,6 +764,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
   function initModals() {
     modals = new HystModal({
       linkAttributeName: "data-hystmodal",
+      afterClose: function (modal) {
+        console.log(modal);
+      },
       //settings (optional). see API
     });
 
@@ -789,6 +792,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
         modalVideo.src = "";
       });
   }
+
+  function initAfterCloseModal(modal) {}
   // Сохраняем ссылки на обработчики
   let formSubmitHandlers = new WeakMap();
   let popupClickHandlers = new WeakMap();
