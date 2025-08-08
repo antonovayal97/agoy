@@ -765,7 +765,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     modals = new HystModal({
       linkAttributeName: "data-hystmodal",
       afterClose: function (modal) {
-        console.log(modal);
+        initAfterCloseModal(modal);
       },
       //settings (optional). see API
     });
@@ -784,16 +784,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
         modalVideo.src = `https://rutube.ru/play/embed/${videoId}`;
       });
     });
-
-    // Очищаем src при закрытии, чтобы видео останавливалось
-    document
-      .querySelector("#modal-video .hystmodal__close")
-      .addEventListener("click", () => {
-        modalVideo.src = "";
-      });
   }
 
-  function initAfterCloseModal(modal) {}
+  function initAfterCloseModal(modal) {
+    if (modal.openedWindow.id == "modal-video") {
+      document.querySelector("#modal-video iframe").src = "";
+    }
+  }
   // Сохраняем ссылки на обработчики
   let formSubmitHandlers = new WeakMap();
   let popupClickHandlers = new WeakMap();
