@@ -780,7 +780,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
-        const videoId = button.dataset.videoId;
+        const videoId = button.dataset.videoUrl;
         modalVideo.src = `https://rutube.ru/play/embed/${videoId}`;
       });
     });
