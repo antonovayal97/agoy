@@ -773,7 +773,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   function initModalsVideo() {
     const modalVideo = document.querySelector("#modal-video iframe");
-    const buttons = document.querySelectorAll("[data-video-id]");
+    const buttons = document.querySelectorAll("[data-video-url]");
 
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
