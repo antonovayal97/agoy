@@ -339,6 +339,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         if (typeof initForms === "function") initForms();
         if (typeof initTableTabs === "function") initTableTabs();
         if (typeof initIframeBtns === "function") initIframeBtns();
+        if (typeof initBbf === "function") initBbf();
 
         initLinkHandlers(); // Инициализируем обработчики ссылок
         console.log("Components initialized");
@@ -7848,6 +7849,37 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
   }
 
+  function initPartnersPage() {
+    let partnersNew__wrap = document.querySelector(".partners-new__wrap");
+    if (partnersNew__wrap) {
+      let logos = document.querySelectorAll(".partners-new__partners-logo");
+      let descriptions = document.querySelectorAll(
+        ".partners-new__partners-item"
+      );
+
+      let currentIndex = null;
+
+      logos.forEach((logo, index) => {
+        if (index == 0) {
+          logo.classList.add("partners-new__partners-logo--active");
+          currentIndex = index;
+          descriptions[currentIndex].style.display = "flex";
+        }
+        logo.addEventListener("click", () => {
+          if (currentIndex == index) {
+            return 0;
+          }
+          logos[currentIndex].classList.remove(
+            "partners-new__partners-logo--active"
+          );
+          descriptions[currentIndex].style = null;
+          logo.classList.add("partners-new__partners-logo--active");
+          currentIndex = index;
+          descriptions[currentIndex].style.display = "flex";
+        });
+      });
+    }
+  }
   function init() {
     initPageChanger();
     initAdapt();
@@ -7867,6 +7899,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     initShowMore();
     initFancy();
     initBbf();
+    initPartnersPage();
     if (window.innerWidth < 768) {
       initMobileScroller();
     }
