@@ -292,6 +292,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     function handleLinkClick(e) {
       const href = this.getAttribute("href");
+
+      const isHystmodal = this.getAttribute("data-hystmodal");
+
+      if (isHystmodal) return;
+
       if (!href) return;
 
       isMenuOpened = false;
