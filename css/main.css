@@ -2283,9 +2283,11 @@ footer .footer__item--social-icon {
 }
 .statiya__content-block ol,
 .statiya__content-block ul {
-  list-style: decimal;
   margin-left: 1rem;
   margin-bottom: 1rem;
+}
+.statiya__content-block ol {
+  list-style: decimal;
 }
 .statiya__content-block ol li {
   margin-bottom: 0.5rem;
