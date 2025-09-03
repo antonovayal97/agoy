@@ -2281,6 +2281,16 @@ footer .footer__item--social-icon {
 .statiya__content-block p {
   margin-bottom: 1rem;
 }
+.statiya__content-block ol {
+  list-style: decimal;
+  margin-bottom: 1rem;
+}
+.statiya__content-block ol li {
+  margin-bottom: 0.5rem;
+}
+.statiya__content-block ol li:last-child {
+  margin-bottom: 0;
+}
 .statiya__content-block p:last-child {
   margin-bottom: 0;
 }
