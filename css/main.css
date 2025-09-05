@@ -2289,10 +2289,15 @@ footer .footer__item--social-icon {
 .statiya__content-block ol {
   list-style: decimal;
 }
-.statiya__content-block ol li {
+.statiya__content-block ul {
+  list-style: disc;
+}
+.statiya__content-block ol li,
+.statiya__content-block ul li {
   margin-bottom: 0.5rem;
 }
-.statiya__content-block ol li:last-child {
+.statiya__content-block ol li:last-child,
+.statiya__content-block ul li:last-child {
   margin-bottom: 0;
 }
 .statiya__content-block p:last-child {
