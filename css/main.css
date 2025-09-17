@@ -1890,12 +1890,12 @@ footer .footer__item--social-icon {
     transform: translateY(-50%);
   }
   .big-slider__arrow--left {
-    top: 40%;
+    top: 33%;
     left: 6px;
     transform: translate(0px, -50%);
   }
   .big-slider__arrow--right {
-    top: 40%;
+    top: 33%;
     right: 6px;
     transform: translate(0px, -50%);
   }
