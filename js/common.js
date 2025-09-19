@@ -345,6 +345,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         if (typeof initTableTabs === "function") initTableTabs();
         if (typeof initIframeBtns === "function") initIframeBtns();
         if (typeof initBbf === "function") initBbf();
+        if (typeof initModalsVideo === "function") initModalsVideo();
 
         initLinkHandlers(); // Инициализируем обработчики ссылок
         console.log("Components initialized");
